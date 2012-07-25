@@ -1,10 +1,10 @@
 # The Ferrari meets JayData
 ## Using the SharePoint DVWP in Ferrari mode Part 4.
 
-Work in progress!
+[Work in progress!] Part 3 and Part 4 haven't been released yet!
 
-Here's the final part of blog posts that bridges the world between SharePoint 2010/2013 and modern HTML5 single
-page application.
+Here's the repro for the final part of blog posts that bridges the world between SharePoint 2010/2013 and modern HTML5
+single page application.
 
 
 1. [SharePoint DVWP: from workhorse to ferrari in 7 steps]
@@ -20,8 +20,7 @@ unique view for OOTB SharePoint sites.
 4. Alternative for SergoiUI (the metro font) [Open Sans Condensed]
 5. Metro like icons by IconShock [Free Metro Icons]
 6. Client site templating and two-way data binding (MVVM) [KnockoutJS]
-7. Integration with KnockoutJS and abstraction layer for accessing ODdata [JayData]
-
+7. Abstraction layer for accessing ODdata and integration with KnockoutJS [JayData]
 
 [DVWP in ferrari mode]: http://rainerat.spirit.de/2012/07/15/sharepoint-dvwp-from-workhorse-to-ferrari-in-7-steps/
 [Live Preview SP2010]: http://www.spirit.de/demos/metro/ZurbV2/MetroStyle.aspx
@@ -36,3 +35,5 @@ unique view for OOTB SharePoint sites.
 
 [SharePoint DVWP: from workhorse to ferrari in 7 steps]: http://rainerat.spirit.de/2012/07/15/sharepoint-dvwp-from-workhorse-to-ferrari-in-7-steps/
 [The SharePoint DVWP in Ferrari mode strikes again]: http://rainerat.spirit.de/2012/07/20/the-sharepoint-dvwp-in-ferrari-mode-strikes-again/
+
+[Work in progress!]: http://www.spirit.de/demos/metro/ZurbV3/MetroStyle.aspx
