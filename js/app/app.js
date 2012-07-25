@@ -3,30 +3,61 @@
  * Date: 24.07.12
  * Time: 15:35
  */
-define(['knockout', 'helper'], function (ko, fn) {
+define(['knockout', 'helper', 'postbox', 'jaydata', 'appData', 'jd2ko'], function (ko, fn, postbox) {
+
+    var app = window.app || {};
+
+    app.defaults = {
+
+    };
+    app.context = new app.jaydata.MetroStyleDataContext( { name:'oData', oDataServiceHost: '../_vti_bin/listdata.svc' });
+
+
+
+
 
     function TileViewModel() {
         // Data
         var self = this;
         self.TileData = ko.observable();
-        // Behaviours
 
+        // Behaviours
         self.goToDetail = function (tile) {
-            alert(fn.cleanup(tile.title));
+            postbox.publish('selectedList', fn.cleanup(tile.title));
         };
+
         // Bootstrap
         self.TileData = app.tilesData.tiles.tile;
         // Client-side routes
     }
 
-    function LogonViewModel(){
+    function LogonViewModel() {
         var self = this;
         self.userId = ko.observable();
         self.userId = app.configMap.userId;
 
-        self.showLogon = function ( user ){
-           return user.userId === 'anonymous' ;
-        }
+
+        self.showLogon = ko.computed(function () {
+            return self.userId === 'anonymous';
+        }, self);
+
+        self.loginURL = ko.computed(function () {
+            return '../_layouts/Authenticate.aspx?Source=' + encodeURIComponent(location.pathname)
+        }, self);
+
+    }
+
+    function DetailModel() {
+        var self = this;
+        self.selectedList = ko.observable('').syncWith('selectedList');
+
+        self.allItems = ko.observableArray([]);
+
+        postbox.subscribe("selectedList", function (newValue) {
+            if (newValue !== '') {
+                app.context[newValue].toArray(self.allItems);
+            }
+        }, self);
 
     }
 
@@ -44,5 +75,6 @@ define(['knockout', 'helper'], function (ko, fn) {
 
     ko.applyBindings(new TileViewModel(), document.getElementById('metroTiles'));
     ko.applyBindings(new LogonViewModel(), document.getElementById('loginHelper'));
+    ko.applyBindings(new DetailModel(), document.getElementById('detailView'));
 
 });
