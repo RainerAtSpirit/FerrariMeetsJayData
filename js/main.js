@@ -6,7 +6,7 @@
 
 requirejs.config({
     //By default load any module IDs from js/lib
-    baseUrl : 'javascripts',
+    baseUrl : 'libs',
     paths : {
         jquery : [
             '//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min',
@@ -15,10 +15,15 @@ requirejs.config({
             '//ajax.aspnetcdn.com/ajax/knockout/knockout-2.1.0',
             'knockout-2.1.0'],
         sammy : 'sammy-0.7.1.min',
-        prettyDate : 'app/jquery.prettyDate',
-        metrojs : 'app/MetroJs',
-        app : 'app/app',
-        helper : 'app/helper'
+        prettyDate : 'jquery.prettyDate',
+        metrojs : 'MetroJs',
+        jaydata : 'JayData-standalone.min',
+        jd2ko : 'JayDataModules/knockout',
+        postbox : 'knockout-postbox.min',
+        // app related files are stored separately from libs
+        app : '../js/app/app',
+        appData : '../js/app/metroDemo',
+        helper : '../js/app/helper'
     },
     shim : {
         'prettyDate' : {
@@ -32,11 +37,24 @@ requirejs.config({
         'metrojs' : {
             deps : ['jquery'],
             exports : 'jQuery.fn.metrojs'
+        },
+        'appdata' : {
+            deps : ['jaydata'],
+            exports : 'app.context'
+        },
+        'jd2ko' : {
+            deps : ['jaydata']
+        },
+        'appData' : {
+            deps : ['jaydata']
+        },
+        'postbox' : {
+            deps : ['knockout']
         }
     }
 });
 
-require(['jquery', 'knockout', 'app', 'sammy', 'prettyDate', 'metrojs' ], function ( $ ) {
+require(['jquery', 'app', 'prettyDate', 'metrojs' ], function ($) {
 
     //Things that happen on dom ready
     $(function () {

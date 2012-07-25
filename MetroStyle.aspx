@@ -18,7 +18,7 @@
     <!-- Set the viewport width to device width for mobile -->
     <meta name="viewport" content="width=device-width"/>
 
-    <title>The Ferrari meets KnockoutJS</title>
+    <title>The Ferrari meets JayData</title>
 
     <!-- Included metroJS CSS  -->
     <link rel="stylesheet" type="text/css" href="stylesheets/MetroJs.css"/>
@@ -27,7 +27,7 @@
     <link rel="stylesheet" href="stylesheets/prod.css"/>
     <!-- DVWP with DataSourceMode="ListOfLists" -->
     <WebPartPages:DataFormWebPart runat="server" AsyncRefresh="False" FrameType="None" SuppressWebPartChrome="True"
-                                  __WebPartId="{A291D5E0-F30E-445B-9F70-8E2401F20DAD}">
+                                  __WebPartId="{BF955286-7CA9-41E1-A769-F4A1986554A6}">
         <ParameterBindings>
             <ParameterBinding Name="UserID" Location="CAMLVariable" DefaultValue="anonymous"/>
         </ParameterBindings>
@@ -40,9 +40,9 @@
         </DataSources>
     </WebPartPages:DataFormWebPart>
     <!-- DVWP with DataSourceMode="ListOfLists" -->
-    <script src="javascripts/modernizr.foundation.js"></script>
+    <script src="libs/modernizr.foundation.js"></script>
 
-    <script data-main="javascripts/main" src="javascripts/require.js"></script>
+    <script data-main="js/main" src="libs/require.js"></script>
     <script type="text/javascript">
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', 'UA-31072569-1']);
@@ -58,14 +58,16 @@
 
 <div class="row">
     <div class="twelve columns">
-        <h1>The Ferrari meets KnockoutJS</h1>
+        <h1>The Ferrari meets JayData</h1>
+
         <p>Live demo for an upcoming blog post at <a href="http://rainerat.spirit.de/">Rainer at Spirit</a></p>
-        <div id="loginHelper" >
-            <div data-bind="visible: userId !== 'anonymous' " style="display: none;" >
-            You're logged on as:  <span class="success label" data-bind="text: userId"></span>
+
+        <div id="loginHelper">
+            <div data-bind="visible: userId !== 'anonymous' " style="display: none;">
+                You're logged on as: <span class="success label" data-bind="text: userId"></span>
             </div>
             <div data-bind="visible: userId === 'anonymous' " style="display: none;">
-                <a href="../_layouts/Authenticate.aspx?Source=%2Fdemos%2Fmetro%2FZurbV2%2FMetroStyle%2Easpx" class="button"> Sign
+                <a href="#" data-bind="attr: {href: loginURL}" class="button"> Sign
                     in</a>
                 with username: <span class="secondary label">ODataDemo</span> password: <span class="secondary label">OData!Demo</span>
             </div>
@@ -91,6 +93,28 @@
             </div>
         </div>
     </div>
+</div>
+<!-- Draft version -->
+<div class="row" id="detailView">
+    <h3 data-bind="text: $root.selectedList"></h3>
+    <table>
+        <thead>
+        <tr>
+            <th>Id</th>
+            <th>Title</th>
+            <th>Created</th>
+            <th>CreatedBy</th>
+        </tr>
+        </thead>
+        <tbody data-bind="foreach: allItems">
+        <tr>
+            <td><a href="#" data-bind="text: Id"></a></td>
+            <td data-bind="text: Title || Name"></td>
+            <td data-bind="text: Created"></td>
+            <td data-bind="text: CreatedBy"></td>
+        </tr>
+        </tbody>
+    </table>
 </div>
 
 
