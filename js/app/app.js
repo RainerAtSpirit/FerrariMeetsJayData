@@ -7,13 +7,7 @@ define(['knockout', 'helper', 'postbox', 'jaydata', 'appData', 'jd2ko'], functio
 
     var app = window.app || {};
 
-    app.defaults = {
-
-    };
     app.context = new app.jaydata.MetroStyleDataContext( { name:'oData', oDataServiceHost: '../_vti_bin/listdata.svc' });
-
-
-
 
 
     function TileViewModel() {
@@ -47,15 +41,30 @@ define(['knockout', 'helper', 'postbox', 'jaydata', 'appData', 'jd2ko'], functio
 
     }
 
-    function DetailModel() {
+    function ListingModel() {
         var self = this;
         self.selectedList = ko.observable('').syncWith('selectedList');
 
         self.allItems = ko.observableArray([]);
 
+        // Setting up defaults for listing requests
+        self.take = 50;
+        self.map =  function (item) {
+            return {
+                Id: item.Id,
+                Title: item.Title,
+                Created: item.Created,
+                CreatedBy: item.CreatedBy
+            };
+        };
+
+
         postbox.subscribe("selectedList", function (newValue) {
             if (newValue !== '') {
-                app.context[newValue].toArray(self.allItems);
+                app.context[newValue]
+                    .map(self.map)
+                    .take(self.take)
+                    .toArray(self.allItems);
             }
         }, self);
 
@@ -75,6 +84,6 @@ define(['knockout', 'helper', 'postbox', 'jaydata', 'appData', 'jd2ko'], functio
 
     ko.applyBindings(new TileViewModel(), document.getElementById('metroTiles'));
     ko.applyBindings(new LogonViewModel(), document.getElementById('loginHelper'));
-    ko.applyBindings(new DetailModel(), document.getElementById('detailView'));
+    ko.applyBindings(new ListingModel(), document.getElementById('listingView'));
 
 });
