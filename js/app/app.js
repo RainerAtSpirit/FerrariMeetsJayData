@@ -7,7 +7,7 @@ define(['knockout', 'helper', 'postbox', 'jaydata', 'appData', 'jd2ko'], functio
 
     var app = window.app || {};
 
-    app.context = new app.jaydata.MetroStyleDataContext( { name:'oData', oDataServiceHost: '../_vti_bin/listdata.svc' });
+    app.context = new app.jaydata.MetroStyleDataContext({ name : 'oData', oDataServiceHost : '../_vti_bin/listdata.svc' });
 
 
     function TileViewModel() {
@@ -49,19 +49,19 @@ define(['knockout', 'helper', 'postbox', 'jaydata', 'appData', 'jd2ko'], functio
 
         // Setting up defaults for listing requests
         self.take = 50;
-        self.map =  function (item) {
+        self.map = function (item) {
             return {
-                Id: item.Id,
-                Title: item.Title,
-                Created: item.Created,
-                CreatedBy: item.CreatedBy
+                Id : item.Id,
+                Title : item.Title,
+                Created : item.Created,
+                CreatedBy : item.CreatedBy.Name
             };
         };
-
 
         postbox.subscribe("selectedList", function (newValue) {
             if (newValue !== '') {
                 app.context[newValue]
+                    .include('CreatedBy')
                     .map(self.map)
                     .take(self.take)
                     .toArray(self.allItems);
