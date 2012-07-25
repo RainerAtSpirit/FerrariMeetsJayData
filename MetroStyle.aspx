@@ -95,7 +95,7 @@
     </div>
 </div>
 <!-- Draft version -->
-<div class="row" id="detailView">
+<div class="row" id="listingView">
     <h3 data-bind="text: $root.selectedList"></h3>
     <table>
         <thead>
@@ -109,7 +109,7 @@
         <tbody data-bind="foreach: allItems">
         <tr>
             <td><a href="#" data-bind="text: Id"></a></td>
-            <td data-bind="text: Title || Name"></td>
+            <td data-bind="text: Title"></td>
             <td data-bind="text: Created"></td>
             <td data-bind="text: CreatedBy"></td>
         </tr>
