@@ -1,0 +1,187 @@
+@import "foundation-style/buttons.scss";
+@import "foundation-style/forms.scss";
+@import "foundation-style/globals.scss";
+@import "foundation-style/grid.scss";
+@import "foundation-style/navbar.scss";
+@import "foundation-style/orbit.scss";
+@import "foundation-style/reveal.scss";
+@import "foundation-style/tabs.scss";
+@import "foundation-style/typography.scss";
+@import "foundation-style/ui.scss";
+/* --------------------------------------------------
+   Table of Contents
+-----------------------------------------------------
+:: Shared Styles
+:: $screenXsmall setting
+:: $screenSmall setting
+*/
+
+/* -----------------------------------------
+  Shared Styles
+----------------------------------------- */
+@include font-face("Open Sans Condensed", font-files("OpenSans-CondensedLight.woff", "OpenSans-CondensedLight.ttf", "OpenSans-CondensedLight.svg"), "OpenSans-CondensedLight", 300, normal );
+@include font-face("Open Sans Condensed", font-files("OpenSans-CondensedLightItalic.woff", "OpenSans-CondensedLightItalic.ttf", "OpenSans-CondensedLightItalic.svg"), "OpenSans-CondensedLightItalic", 300, italic );
+@include font-face("Open Sans Condensed", font-files("OpenSans-CondensedBold.woff", "OpenSans-CondensedBold.ttf", "OpenSans-CondensedBold.svg"), "OpenSans-CondensedBold", 700, normal );
+
+$SegoeUILight: "Segoe UI Light", "Open Sans Condensed", Helvetica, sans-serif;
+
+
+.micon {
+  padding: 5px;
+}
+
+
+.badge {
+  bottom: 5px;
+  font-weight: bold;
+  padding: 0 5px;
+  position: absolute;
+  right: 5px;
+  z-index: 30
+}
+
+.live-tile .tile-title, .list-tile .tile-title {
+  padding: 0 20px 6px 6px;
+}
+
+.live-tile {
+  cursor: pointer;
+}
+
+.live-tile > div, .list-tile > div {
+  padding :5px
+}
+
+.live-tile h3 {
+  font-weight: normal;
+}
+
+
+/* http://msdn.microsoft.com/en-us/library/windows/apps/hh700394.aspx */
+
+/* A couple of font definition from Win8 ui-dark.css */
+
+
+body {
+  color: rgb(255, 255, 255);
+  background-color: rgb(29, 29, 29);
+}
+
+body.light {
+  color: rgb(255, 255, 255);
+  background-color: rgb(29, 29, 29);
+}
+
+/*
+Weight and size definitions for typographic classes and elements.
+*/
+h1, .win-type-xx-large {
+    font-size: 42pt;
+    font-weight: 200;
+    line-height: 1.1429; /* 64px when font-size is 42pt */
+}
+h2, .win-type-x-large {
+    font-size: 20pt;
+    font-weight: 200;
+    line-height: 1.2; /* 32px when font-size is 20pt */
+}
+h3, .win-type-large {
+    font-size: 11pt;
+    font-weight: 600;
+    line-height: 1.3636; /* 20px when font-size is 11pt */
+}
+h4, .win-type-medium, code, pre, samp {
+    font-size: 11pt;
+    font-weight: 400;
+    line-height: 1.3636; /* 20px when font-size is 11pt */
+}
+body, h5, .win-type-small, legend {
+    font-size: 11pt;
+    font-weight: 300;
+    line-height: 1.3636; /* 20px when font-size is 11pt */
+}
+.win-type-x-small {
+    font-size: 11pt;
+    font-weight: 300;
+    line-height: 1.3636; /* 20px when font-size is 11pt */
+}
+h6, caption, figcaption, small, .win-type-xx-small {
+    font-size: 9pt;
+    font-weight: 400;
+    line-height: 1.6667; /* 20px when font-size is 9pt */
+}
+h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-family: $SegoeUILight;
+}
+.win-type-ellipsis {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+h1.win-type-ellipsis, .win-type-xx-large.win-type-ellipsis {
+    line-height: 1.4286; /* 80px when font-size is 42pt */
+}
+h2.win-type-ellipsis, .win-type-x-large.win-type-ellipsis {
+    line-height: 1.5; /* 40px when font-size is 20pt */
+}
+dt, th {
+    font-size: 11pt;
+    font-weight: 700;
+    line-height: 1.3636; /* 20px when font-size is 11pt */
+}
+abbr, acronym, address, blockquote, cite, dl, dd, li, ol, p, q, td, tr {
+    font-weight: 300;
+}
+b, strong {
+    font-weight: 700;
+}
+em {
+    font-style: italic;
+}
+
+/*
+Fixed font-family rules.
+*/
+code, pre, samp {
+    font-family: "Consolas";
+}
+
+
+/* -----------------------------------------
+ :: $screenXsmall setting
+----------------------------------------- */
+
+@media only screen and (max-width: $screenXsmall) {
+  h1 {
+      font-size: 24pt;
+      font-weight: 200;
+      line-height: 1.1429;
+  }
+
+  .live-tile, .list-tile
+  {
+  	height: 120px;
+  	width: 120px;
+  }
+
+  .wide {
+    width: 248px
+  }
+
+ }
+
+/*
+
+/* -----------------------------------------
+  :: $screenSmall setting
+----------------------------------------- */
+
+@media only screen and (max-width: $screenSmall) and (min-width: $screenXsmall) {
+    h1 {
+     font-size: 32pt;
+     font-weight: 200;
+     line-height: 1.1429;
+   }
+}

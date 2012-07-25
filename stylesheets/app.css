@@ -1,0 +1,234 @@
+/* --------------------------------------------------
+   Table of Contents
+-----------------------------------------------------
+:: Shared Styles
+:: $screenXsmall setting
+:: $screenSmall setting
+*/
+/* -----------------------------------------
+  Shared Styles
+----------------------------------------- */
+@font-face {
+  font-family: "Open Sans Condensed";
+  src: url('fonts/OpenSans-CondensedLight');
+  src: url('fonts/OpenSans-CondensedLight?#iefix') format('eot'), url('fonts/OpenSans-CondensedLight.woff') format('woff'), url('fonts/OpenSans-CondensedLight.ttf') format('truetype'), url('fonts/OpenSans-CondensedLight.svg') format('svg');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "Open Sans Condensed";
+  src: url('fonts/OpenSans-CondensedLightItalic');
+  src: url('fonts/OpenSans-CondensedLightItalic?#iefix') format('eot'), url('fonts/OpenSans-CondensedLightItalic.woff') format('woff'), url('fonts/OpenSans-CondensedLightItalic.ttf') format('truetype'), url('fonts/OpenSans-CondensedLightItalic.svg') format('svg');
+  font-weight: 300;
+  font-style: italic;
+}
+
+@font-face {
+  font-family: "Open Sans Condensed";
+  src: url('fonts/OpenSans-CondensedBold');
+  src: url('fonts/OpenSans-CondensedBold?#iefix') format('eot'), url('fonts/OpenSans-CondensedBold.woff') format('woff'), url('fonts/OpenSans-CondensedBold.ttf') format('truetype'), url('fonts/OpenSans-CondensedBold.svg') format('svg');
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* line 21, ../sass/app.scss */
+.micon {
+  padding: 5px;
+}
+
+/* line 25, ../sass/app.scss */
+.badge {
+  bottom: 5px;
+  font-weight: bold;
+  padding: 0 5px;
+  position: absolute;
+  right: 5px;
+  z-index: 30;
+}
+
+/* line 34, ../sass/app.scss */
+.live-tile .tile-title, .list-tile .tile-title {
+  padding: 0 20px 6px 6px;
+}
+
+/* line 38, ../sass/app.scss */
+.live-tile {
+  cursor: pointer;
+}
+
+/* line 42, ../sass/app.scss */
+.live-tile > div, .list-tile > div {
+  padding: 5px;
+}
+
+/* line 46, ../sass/app.scss */
+.live-tile h3 {
+  font-weight: normal;
+}
+
+/* http://msdn.microsoft.com/en-us/library/windows/apps/hh700394.aspx */
+/* A couple of font definition from Win8 ui-dark.css */
+/* line 56, ../sass/app.scss */
+body {
+  color: white;
+  background-color: #1d1d1d;
+}
+
+/* line 61, ../sass/app.scss */
+body.light {
+  color: white;
+  background-color: #1d1d1d;
+}
+
+/*
+Weight and size definitions for typographic classes and elements.
+*/
+/* line 69, ../sass/app.scss */
+h1, .win-type-xx-large {
+  font-size: 42pt;
+  font-weight: 200;
+  line-height: 1.1429;
+  /* 64px when font-size is 42pt */
+}
+
+/* line 74, ../sass/app.scss */
+h2, .win-type-x-large {
+  font-size: 20pt;
+  font-weight: 200;
+  line-height: 1.2;
+  /* 32px when font-size is 20pt */
+}
+
+/* line 79, ../sass/app.scss */
+h3, .win-type-large {
+  font-size: 11pt;
+  font-weight: 600;
+  line-height: 1.3636;
+  /* 20px when font-size is 11pt */
+}
+
+/* line 84, ../sass/app.scss */
+h4, .win-type-medium, code, pre, samp {
+  font-size: 11pt;
+  font-weight: 400;
+  line-height: 1.3636;
+  /* 20px when font-size is 11pt */
+}
+
+/* line 89, ../sass/app.scss */
+body, h5, .win-type-small, legend {
+  font-size: 11pt;
+  font-weight: 300;
+  line-height: 1.3636;
+  /* 20px when font-size is 11pt */
+}
+
+/* line 94, ../sass/app.scss */
+.win-type-x-small {
+  font-size: 11pt;
+  font-weight: 300;
+  line-height: 1.3636;
+  /* 20px when font-size is 11pt */
+}
+
+/* line 99, ../sass/app.scss */
+h6, caption, figcaption, small, .win-type-xx-small {
+  font-size: 9pt;
+  font-weight: 400;
+  line-height: 1.6667;
+  /* 20px when font-size is 9pt */
+}
+
+/* line 104, ../sass/app.scss */
+h1, h2, h3, h4, h5, h6 {
+  margin-top: 0;
+  margin-bottom: 0;
+  font-family: "Segoe UI Light", "Open Sans Condensed", Helvetica, sans-serif;
+}
+
+/* line 109, ../sass/app.scss */
+.win-type-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* line 114, ../sass/app.scss */
+h1.win-type-ellipsis, .win-type-xx-large.win-type-ellipsis {
+  line-height: 1.4286;
+  /* 80px when font-size is 42pt */
+}
+
+/* line 117, ../sass/app.scss */
+h2.win-type-ellipsis, .win-type-x-large.win-type-ellipsis {
+  line-height: 1.5;
+  /* 40px when font-size is 20pt */
+}
+
+/* line 120, ../sass/app.scss */
+dt, th {
+  font-size: 11pt;
+  font-weight: 700;
+  line-height: 1.3636;
+  /* 20px when font-size is 11pt */
+}
+
+/* line 125, ../sass/app.scss */
+abbr, acronym, address, blockquote, cite, dl, dd, li, ol, p, q, td, tr {
+  font-weight: 300;
+}
+
+/* line 128, ../sass/app.scss */
+b, strong {
+  font-weight: 700;
+}
+
+/* line 131, ../sass/app.scss */
+em {
+  font-style: italic;
+}
+
+/*
+Fixed font-family rules.
+*/
+/* line 138, ../sass/app.scss */
+code, pre, samp {
+  font-family: "Consolas";
+}
+
+/* -----------------------------------------
+ :: $screenXsmall setting
+----------------------------------------- */
+@media only screen and (max-width: 320px) {
+  /* line 148, ../sass/app.scss */
+  h1 {
+    font-size: 24pt;
+    font-weight: 200;
+    line-height: 1.1429;
+  }
+
+  /* line 155, ../sass/app.scss */
+  .live-tile, .list-tile {
+    height: 120px;
+    width: 120px;
+  }
+
+  /* line 160, ../sass/app.scss */
+  .wide {
+    width: 248px;
+  }
+}
+/*
+
+/* -----------------------------------------
+  :: $screenSmall setting
+----------------------------------------- */
+@media only screen and (max-width: 768px) and (min-width: 320px) {
+  /* line 173, ../sass/app.scss */
+  h1 {
+    font-size: 32pt;
+    font-weight: 200;
+    line-height: 1.1429;
+  }
+}
