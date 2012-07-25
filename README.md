@@ -1,10 +1,11 @@
-# The Ferrari meets KnockoutJS
-## Using the SharePoint DVWP in Ferrari mode Part 2.
+# The Ferrari meets JayData
+## Using the SharePoint DVWP in Ferrari mode Part 4.
 
-KnockoutJS HTML5 app powered by an DVWP running on SharePoint 2007/2010 and 2013 to produce a Metro like start
-screen for a site.
-[Live Preview SP2010] and [Live Preview SP2013] are available and there will be an upcoming blog migration to
-KnockoutJS.
+Work in progress!
+
+Here's the final part of blog posts that bridges the world between SharePoint 2010/2013 and modern HTML5 single
+page application.
+
 
 1. [SharePoint DVWP: from workhorse to ferrari in 7 steps]
 2. [The SharePoint DVWP in Ferrari mode strikes again]
@@ -18,7 +19,8 @@ unique view for OOTB SharePoint sites.
 3. Metro styled live tiles by @Drew Greenwell [MetroJS]
 4. Alternative for SergoiUI (the metro font) [Open Sans Condensed]
 5. Metro like icons by IconShock [Free Metro Icons]
-6. Migrating solution to client site [KnockoutJS]
+6. Client site templating and two-way data binding (MVVM) [KnockoutJS]
+7. Integration with KnockoutJS and abstraction layer for accessing ODdata [JayData]
 
 
 [DVWP in ferrari mode]: http://rainerat.spirit.de/2012/07/15/sharepoint-dvwp-from-workhorse-to-ferrari-in-7-steps/
@@ -29,6 +31,8 @@ unique view for OOTB SharePoint sites.
 [Free Metro Icons]: http://www.iconshock.com/windows8-icons/
 [Open Sans Condensed]: http://www.google.com/webfonts#UsePlace:use/Collection:Open+Sans+Condensed
 [KnockoutJS]: http://knockoutjs.com/
+[JayData]: http://jaydata.org/
+
 
 [SharePoint DVWP: from workhorse to ferrari in 7 steps]: http://rainerat.spirit.de/2012/07/15/sharepoint-dvwp-from-workhorse-to-ferrari-in-7-steps/
 [The SharePoint DVWP in Ferrari mode strikes again]: http://rainerat.spirit.de/2012/07/20/the-sharepoint-dvwp-in-ferrari-mode-strikes-again/
