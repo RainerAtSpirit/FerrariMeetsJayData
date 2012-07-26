@@ -49,7 +49,7 @@ requirejs.config({
 });
 
 require(['jquery', 'app', 'knockout', 'jaydata', 'prettyDate', 'metrojs' ], function ($, app, ko) {
-    // window.ko =  ko;
+    window.ko =  ko;
     // we can safely kick of the app even before document.ready
     app.init();
 

@@ -3,7 +3,7 @@
  * Date: 24.07.12
  * Time: 15:35
  */
-define(['knockout', 'helper', 'postbox', 'jaydata', 'appData', 'jd2ko'], function (ko, fn, postbox) {
+define(['knockout', 'helper', 'postbox', 'underscore', 'jaydata', 'appData', 'jd2ko'], function (ko, fn, postbox, _) {
 
     var app = window.app || {},
         TileViewModel, LogonViewModel, ListingModel, init;
@@ -47,15 +47,15 @@ define(['knockout', 'helper', 'postbox', 'jaydata', 'appData', 'jd2ko'], functio
     ListingModel = function () {
         var self = this;
         self.selectedList = ko.observable('').syncWith('selectedList');
-        self.hasTitle = true;
 
         self.allItems = ko.observableArray([]);
 
         // Setting up defaults for listing requests
         self.take = 50;
         self.include = 'CreatedBy';
+
         // Todo: DRY
-        self.mapTitle = function (item) {
+        self.map = function (item) {
             return {
                 Id : item.Id,
                 Title : item.Title,
@@ -67,22 +67,53 @@ define(['knockout', 'helper', 'postbox', 'jaydata', 'appData', 'jd2ko'], functio
         self.mapName = function (item) {
             return {
                 Id : item.Id,
-                Name : item.Name,
+                Title : item.Name,
                 Created : item.Created,
                 CreatedBy : item.CreatedBy.Name
             };
         };
 
+        self.mapURL = function (item) {
+            return {
+                Id : item.Id,
+                Title : item.URL,
+                Created : item.Created,
+                CreatedBy : item.CreatedBy.Name
+            };
+        };
 
+        self.mapFallback = function (item) {
+            return {
+                Id : item.Id,
+                Title : item.ContentType,
+                Created : item.Created,
+                CreatedBy : item.CreatedBy.Name
+            };
+        };
+
+        chooseMap = function(list) {
+           if ( app.context[list].elementType.memberDefinitions.getMember('Title') ){
+               return self.map;
+           }
+           else if  ( app.context[list].elementType.memberDefinitions.getMember('Name') ){
+               return self.mapName;
+           }
+           else if ( app.context[list].elementType.memberDefinitions.getMember('URL') ){
+               return self.mapURL;
+           }
+           else {
+               return self.Fallback;
+           }
+       };
 
         postbox.subscribe("selectedList", function (newValue) {
             // Check if current list has a Title field defined
-            self.hasTitle = app.context[newValue].elementType.memberDefinitions.getMember('Title') ? true : false ;
+
 
             if (newValue !== '') {
                 app.context[newValue]
                     .include(self.include)
-                    .map(app.context[newValue].elementType.memberDefinitions.getMember('Title') ? self.mapTitle : self.mapName)
+                    .map(chooseMap(newValue))
                     .take(self.take)
                     .toArray(self.allItems);
             }

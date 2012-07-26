@@ -83,11 +83,13 @@
 <!-- Draft version -->
 <div class="row" id="listingView">
     <h3 data-bind="text: $root.selectedList"> No list selected</h3>
+    <div class="debug" data-bind="text: ko.toJSON($root)">
+    </div>
     <table>
         <thead>
         <tr>
             <th>Id</th>
-         <!--   <th>Title</th>-->
+            <th>Title</th>
             <th>Created</th>
             <th>CreatedBy</th>
         </tr>
@@ -95,19 +97,12 @@
         <tbody data-bind="foreach: allItems">
         <tr>
             <td><a href="#" data-bind="text: Id"></a></td>
-            <!-- ko if: $root.hasTitle -->
-                <td data-bind="text: Title"></td>
-            <!-- /ko -->
-            <!-- ko if: !$root.hasTitle -->
-                <td data-bind="text: Name"></td>
-            <!-- /ko -->
+            <td data-bind="text: Title"></td>
             <td data-bind="text: Created"></td>
             <td data-bind="text: CreatedBy"></td>
         </tr>
         </tbody>
     </table>
-    <!--    <div class="debug" data-bind="text: ko.toJSON($root)">-->
-    </div>
 </div>
 
 <SharePoint:FormDigest ID="FormDigest1" runat="server"></SharePoint:FormDigest>
