@@ -17,8 +17,8 @@ requirejs.config({
         sammy : 'sammy-0.7.1.min',
         prettyDate : 'jquery.prettyDate',
         metrojs : 'MetroJs',
-        jaydata : 'JayData-standalone.min',
-        jd2ko : 'JayDataModules/knockout',
+        jaydata : 'JayData1.1.1/jaydata',
+        jd2ko : 'JayData1.1.1/JayDataModules/knockout',
         postbox : 'knockout-postbox.min',
         // app related files are stored separately from libs
         app : '../js/app/app',

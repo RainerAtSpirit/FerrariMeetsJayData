@@ -47,7 +47,6 @@ define(['knockout', 'helper', 'postbox', 'jaydata', 'appData', 'jd2ko'], functio
 
         self.allItems = ko.observableArray([]);
 
-
         // Setting up defaults for listing requests
         self.titleOrName = 'Title';
 

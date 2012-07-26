@@ -82,7 +82,7 @@
 </div>
 <!-- Draft version -->
 <div class="row" id="listingView">
-    <h3 data-bind="text: $root.selectedList"></h3>
+    <h3 data-bind="text: $root.selectedList"> No list selected</h3>
     <table>
         <thead>
         <tr>
@@ -116,14 +116,11 @@
     })();
 </script>
 
-
-
 <!-- Using <XslLink>XSLT/ListsAsTiles.xslt sometimes throws the error "Error while delta-compile custom Xsl for
 dataformwebpart: System.Xml.Xsl.XslLoadException: XSLT compile error. An error occurred  at (109,1).
 System.InvalidOperationException: Operation is not valid due to the current state of the object.
 Using <XSL> instead </XslLink>-->
 <!-- DVWP with DataSourceMode="ListOfLists" -->
-
  <WebPartPages:DataFormWebPart runat="server" AsyncRefresh="False" FrameType="None" SuppressWebPartChrome="True"
                                __WebPartId="{BF955286-7CA9-41E1-A769-F4A1986554A6}">
      <ParameterBindings>
