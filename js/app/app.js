@@ -7,7 +7,7 @@ define(['knockout', 'helper', 'postbox', 'jaydata', 'appData', 'jd2ko'], functio
 
     var app = window.app || {};
 
-    app.context = new app.jaydata.MetroStyleDataContext({ name : 'oData', oDataServiceHost : '../_vti_bin/listdata.svc' });
+    app.context = new app.MetroStyleDataContext({ name : 'oData', oDataServiceHost : '../_vti_bin/listdata.svc' });
 
 
     function TileViewModel() {
@@ -47,8 +47,12 @@ define(['knockout', 'helper', 'postbox', 'jaydata', 'appData', 'jd2ko'], functio
 
         self.allItems = ko.observableArray([]);
 
+
         // Setting up defaults for listing requests
+        self.titleOrName = 'Title';
+
         self.take = 50;
+        self.include = 'CreatedBy';
         self.map = function (item) {
             return {
                 Id : item.Id,
@@ -58,10 +62,12 @@ define(['knockout', 'helper', 'postbox', 'jaydata', 'appData', 'jd2ko'], functio
             };
         };
 
+
         postbox.subscribe("selectedList", function (newValue) {
+            //
             if (newValue !== '') {
                 app.context[newValue]
-                    .include('CreatedBy')
+                    .include(self.include)
                     .map(self.map)
                     .take(self.take)
                     .toArray(self.allItems);
