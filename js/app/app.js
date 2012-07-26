@@ -5,12 +5,15 @@
  */
 define(['knockout', 'helper', 'postbox', 'jaydata', 'appData', 'jd2ko'], function (ko, fn, postbox) {
 
-    var app = window.app || {};
+    var app = window.app || {},
+        TileViewModel, LogonViewModel, ListingModel, init;
+
+
 
     app.context = new app.MetroStyleDataContext({ name : 'oData', oDataServiceHost : '../_vti_bin/listdata.svc' });
 
 
-    function TileViewModel() {
+    TileViewModel = function () {
         // Data
         var self = this;
         self.TileData = ko.observable();
@@ -23,9 +26,9 @@ define(['knockout', 'helper', 'postbox', 'jaydata', 'appData', 'jd2ko'], functio
         // Bootstrap
         self.TileData = app.tilesData.tiles.tile;
         // Client-side routes
-    }
+    };
 
-    function LogonViewModel() {
+     LogonViewModel = function () {
         var self = this;
         self.userId = ko.observable();
         self.userId = app.configMap.userId;
@@ -39,20 +42,20 @@ define(['knockout', 'helper', 'postbox', 'jaydata', 'appData', 'jd2ko'], functio
             return '../_layouts/Authenticate.aspx?Source=' + encodeURIComponent(location.pathname)
         }, self);
 
-    }
+    };
 
-    function ListingModel() {
+    ListingModel = function () {
         var self = this;
         self.selectedList = ko.observable('').syncWith('selectedList');
+        self.hasTitle = true;
 
         self.allItems = ko.observableArray([]);
 
         // Setting up defaults for listing requests
-        self.titleOrName = 'Title';
-
         self.take = 50;
         self.include = 'CreatedBy';
-        self.map = function (item) {
+        // Todo: DRY
+        self.mapTitle = function (item) {
             return {
                 Id : item.Id,
                 Title : item.Title,
@@ -61,34 +64,53 @@ define(['knockout', 'helper', 'postbox', 'jaydata', 'appData', 'jd2ko'], functio
             };
         };
 
+        self.mapName = function (item) {
+            return {
+                Id : item.Id,
+                Name : item.Name,
+                Created : item.Created,
+                CreatedBy : item.CreatedBy.Name
+            };
+        };
+
+
 
         postbox.subscribe("selectedList", function (newValue) {
-            //
+            // Check if current list has a Title field defined
+            self.hasTitle = app.context[newValue].elementType.memberDefinitions.getMember('Title') ? true : false ;
+
             if (newValue !== '') {
                 app.context[newValue]
                     .include(self.include)
-                    .map(self.map)
+                    .map(app.context[newValue].elementType.memberDefinitions.getMember('Title') ? self.mapTitle : self.mapName)
                     .take(self.take)
                     .toArray(self.allItems);
             }
         }, self);
 
-    }
-
-    // See https://github.com/SteveSanderson/knockout/wiki/Bindings---class
-    ko.bindingHandlers['class'] = {
-        'update' : function (element, valueAccessor) {
-            if (element['__ko__previousClassValue__']) {
-                ko.utils.toggleDomNodeCssClass(element, element['__ko__previousClassValue__'], false);
-            }
-            var value = ko.utils.unwrapObservable(valueAccessor());
-            ko.utils.toggleDomNodeCssClass(element, value, true);
-            element['__ko__previousClassValue__'] = value;
-        }
     };
 
-    ko.applyBindings(new TileViewModel(), document.getElementById('metroTiles'));
-    ko.applyBindings(new LogonViewModel(), document.getElementById('loginHelper'));
-    ko.applyBindings(new ListingModel(), document.getElementById('listingView'));
+    init = function() {
+        // See https://github.com/SteveSanderson/knockout/wiki/Bindings---class
+        ko.bindingHandlers['class'] = {
+            'update' : function (element, valueAccessor) {
+                if (element['__ko__previousClassValue__']) {
+                    ko.utils.toggleDomNodeCssClass(element, element['__ko__previousClassValue__'], false);
+                }
+                var value = ko.utils.unwrapObservable(valueAccessor());
+                ko.utils.toggleDomNodeCssClass(element, value, true);
+                element['__ko__previousClassValue__'] = value;
+            }
+        };
+
+        ko.applyBindings(new TileViewModel(), document.getElementById('metroTiles'));
+        ko.applyBindings(new LogonViewModel(), document.getElementById('loginHelper'));
+        ko.applyBindings(new ListingModel(), document.getElementById('listingView'));
+    };
+
+
+    return {
+        init: init
+    }
 
 });

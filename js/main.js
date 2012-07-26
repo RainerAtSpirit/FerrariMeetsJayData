@@ -8,6 +8,7 @@ requirejs.config({
     //By default load any module IDs from js/lib
     baseUrl : 'libs',
     paths : {
+        underscore : 'underscore-min',
         jquery : [
             '//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min',
             'jquery.min'],
@@ -22,7 +23,7 @@ requirejs.config({
         postbox : 'knockout-postbox.min',
         // app related files are stored separately from libs
         app : '../js/app/app',
-        appData : '../js/app/metroDemo',
+        appData : '../js/app/appdata',
         helper : '../js/app/helper'
     },
     shim : {
@@ -38,14 +39,7 @@ requirejs.config({
             deps : ['jquery'],
             exports : 'jQuery.fn.metrojs'
         },
-        'appdata' : {
-            deps : ['jaydata'],
-            exports : 'app.context'
-        },
         'jd2ko' : {
-            deps : ['jaydata']
-        },
-        'appData' : {
             deps : ['jaydata']
         },
         'postbox' : {
@@ -54,7 +48,10 @@ requirejs.config({
     }
 });
 
-require(['jquery', 'app', 'prettyDate', 'metrojs' ], function ($) {
+require(['jquery', 'app', 'knockout', 'jaydata', 'prettyDate', 'metrojs' ], function ($, app, ko) {
+    // window.ko =  ko;
+    // we can safely kick of the app even before document.ready
+    app.init();
 
     //Things that happen on dom ready
     $(function () {
