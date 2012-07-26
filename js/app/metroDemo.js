@@ -69,43 +69,43 @@
     
   };
   registerEdmTypes();
-  $data.Entity.extend('Microsoft.SharePoint.DataService.AnnouncementsItem', {
+  $data.Entity.extend('app.DataService.AnnouncementsItem', {
     'Id': { key:true,type:'Edm.Int32',nullable:false,required:true },
     'ContentTypeID': { type:'Edm.String',nullable:true },
     'ContentType': { type:'Edm.String',nullable:true },
     'Title': { type:'Edm.String',nullable:true },
     'Modified': { type:'Edm.DateTime',nullable:true },
     'Created': { type:'Edm.DateTime',nullable:true },
-    'CreatedBy': { type:'Microsoft.SharePoint.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
+    'CreatedBy': { type:'app.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
     'CreatedById': { type:'Edm.Int32',nullable:true },
-    'ModifiedBy': { type:'Microsoft.SharePoint.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
+    'ModifiedBy': { type:'app.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
     'ModifiedById': { type:'Edm.Int32',nullable:true },
     'Owshiddenversion': { type:'Edm.Int32',nullable:true,concurrencyMode:$data.ConcurrencyMode.Fixed },
     'Version': { type:'Edm.String',nullable:true },
-    'Attachments': { type:'Array',elementType:'Microsoft.SharePoint.DataService.AttachmentsItem',inverseProperty:'$$unbound' },
+    'Attachments': { type:'Array',elementType:'app.DataService.AttachmentsItem',inverseProperty:'$$unbound' },
     'Path': { type:'Edm.String',nullable:true },
     'Body': { type:'Edm.String',nullable:true },
     'Expires': { type:'Edm.DateTime',nullable:true }
   });
-  $data.Entity.extend('Microsoft.SharePoint.DataService.AttachmentsItem', {
+  $data.Entity.extend('app.DataService.AttachmentsItem', {
     'EntitySet': { key:true,type:'Edm.String',nullable:false,required:true },
     'ItemId': { key:true,type:'Edm.Int32',nullable:false,required:true },
     'Name': { key:true,type:'Edm.String',nullable:false,required:true }
   });
-  $data.Entity.extend('Microsoft.SharePoint.DataService.CalendarItem', {
+  $data.Entity.extend('app.DataService.CalendarItem', {
     'Id': { key:true,type:'Edm.Int32',nullable:false,required:true },
     'ContentTypeID': { type:'Edm.String',nullable:true },
     'ContentType': { type:'Edm.String',nullable:true },
     'Title': { type:'Edm.String',nullable:true },
     'Modified': { type:'Edm.DateTime',nullable:true },
     'Created': { type:'Edm.DateTime',nullable:true },
-    'CreatedBy': { type:'Microsoft.SharePoint.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
+    'CreatedBy': { type:'app.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
     'CreatedById': { type:'Edm.Int32',nullable:true },
-    'ModifiedBy': { type:'Microsoft.SharePoint.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
+    'ModifiedBy': { type:'app.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
     'ModifiedById': { type:'Edm.Int32',nullable:true },
     'Owshiddenversion': { type:'Edm.Int32',nullable:true,concurrencyMode:$data.ConcurrencyMode.Fixed },
     'Version': { type:'Edm.String',nullable:true },
-    'Attachments': { type:'Array',elementType:'Microsoft.SharePoint.DataService.AttachmentsItem',inverseProperty:'$$unbound' },
+    'Attachments': { type:'Array',elementType:'app.DataService.AttachmentsItem',inverseProperty:'$$unbound' },
     'Path': { type:'Edm.String',nullable:true },
     'Location': { type:'Edm.String',nullable:true },
     'StartTime': { type:'Edm.DateTime',nullable:true },
@@ -114,27 +114,27 @@
     'AllDayEvent': { type:'Edm.Boolean',nullable:true },
     'Recurrence': { type:'Edm.Boolean',nullable:true },
     'Workspace': { type:'Edm.Boolean',nullable:true },
-    'Attendees': { type:'Array',elementType:'Microsoft.SharePoint.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
-    'Category': { type:'Microsoft.SharePoint.DataService.CalendarCategoryValue',inverseProperty:'$$unbound' },
+    'Attendees': { type:'Array',elementType:'app.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
+    'Category': { type:'app.DataService.CalendarCategoryValue',inverseProperty:'$$unbound' },
     'CategoryValue': { type:'Edm.String',nullable:true }
   });
-  $data.Entity.extend('Microsoft.SharePoint.DataService.CalendarCategoryValue', {
+  $data.Entity.extend('app.DataService.CalendarCategoryValue', {
     'Value': { key:true,type:'Edm.String',nullable:false,required:true }
   });
-  $data.Entity.extend('Microsoft.SharePoint.DataService.ContactsItem', {
+  $data.Entity.extend('app.DataService.ContactsItem', {
     'Id': { key:true,type:'Edm.Int32',nullable:false,required:true },
     'ContentTypeID': { type:'Edm.String',nullable:true },
     'ContentType': { type:'Edm.String',nullable:true },
     'LastName': { type:'Edm.String',nullable:true },
     'Modified': { type:'Edm.DateTime',nullable:true },
     'Created': { type:'Edm.DateTime',nullable:true },
-    'CreatedBy': { type:'Microsoft.SharePoint.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
+    'CreatedBy': { type:'app.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
     'CreatedById': { type:'Edm.Int32',nullable:true },
-    'ModifiedBy': { type:'Microsoft.SharePoint.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
+    'ModifiedBy': { type:'app.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
     'ModifiedById': { type:'Edm.Int32',nullable:true },
     'Owshiddenversion': { type:'Edm.Int32',nullable:true,concurrencyMode:$data.ConcurrencyMode.Fixed },
     'Version': { type:'Edm.String',nullable:true },
-    'Attachments': { type:'Array',elementType:'Microsoft.SharePoint.DataService.AttachmentsItem',inverseProperty:'$$unbound' },
+    'Attachments': { type:'Array',elementType:'app.DataService.AttachmentsItem',inverseProperty:'$$unbound' },
     'Path': { type:'Edm.String',nullable:true },
     'FirstName': { type:'Edm.String',nullable:true },
     'FullName': { type:'Edm.String',nullable:true },
@@ -152,39 +152,39 @@
     'CountryRegion': { type:'Edm.String',nullable:true },
     'WebPage': { type:'Edm.String',nullable:true },
     'Notes': { type:'Edm.String',nullable:true },
-    'Task': { type:'Microsoft.SharePoint.DataService.TasksItem',inverseProperty:'$$unbound' },
+    'Task': { type:'app.DataService.TasksItem',inverseProperty:'$$unbound' },
     'TaskId': { type:'Edm.Int32',nullable:true }
   });
-  $data.Entity.extend('Microsoft.SharePoint.DataService.Custom1Item', {
+  $data.Entity.extend('app.DataService.Custom1Item', {
     'Id': { key:true,type:'Edm.Int32',nullable:false,required:true },
     'ContentTypeID': { type:'Edm.String',nullable:true },
     'ContentType': { type:'Edm.String',nullable:true },
     'Title': { type:'Edm.String',nullable:true },
     'Modified': { type:'Edm.DateTime',nullable:true },
     'Created': { type:'Edm.DateTime',nullable:true },
-    'CreatedBy': { type:'Microsoft.SharePoint.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
+    'CreatedBy': { type:'app.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
     'CreatedById': { type:'Edm.Int32',nullable:true },
-    'ModifiedBy': { type:'Microsoft.SharePoint.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
+    'ModifiedBy': { type:'app.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
     'ModifiedById': { type:'Edm.Int32',nullable:true },
     'Owshiddenversion': { type:'Edm.Int32',nullable:true,concurrencyMode:$data.ConcurrencyMode.Fixed },
     'Version': { type:'Edm.String',nullable:true },
-    'Attachments': { type:'Array',elementType:'Microsoft.SharePoint.DataService.AttachmentsItem',inverseProperty:'$$unbound' },
+    'Attachments': { type:'Array',elementType:'app.DataService.AttachmentsItem',inverseProperty:'$$unbound' },
     'Path': { type:'Edm.String',nullable:true }
   });
-  $data.Entity.extend('Microsoft.SharePoint.DataService.DocumentLibrary1Item', {
+  $data.Entity.extend('app.DataService.DocumentLibrary1Item', {
     'Id': { key:true,type:'Edm.Int32',nullable:false,required:true },
     'ContentTypeID': { type:'Edm.String',nullable:true },
     'ContentType': { type:'Edm.String',nullable:true },
     'Created': { type:'Edm.DateTime',nullable:true },
-    'CreatedBy': { type:'Microsoft.SharePoint.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
+    'CreatedBy': { type:'app.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
     'CreatedById': { type:'Edm.Int32',nullable:true },
     'Modified': { type:'Edm.DateTime',nullable:true },
-    'ModifiedBy': { type:'Microsoft.SharePoint.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
+    'ModifiedBy': { type:'app.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
     'ModifiedById': { type:'Edm.Int32',nullable:true },
     'CopySource': { type:'Edm.String',nullable:true },
     'ApprovalStatus': { type:'Edm.String',nullable:true },
     'Path': { type:'Edm.String',nullable:true },
-    'CheckedOutTo': { type:'Microsoft.SharePoint.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
+    'CheckedOutTo': { type:'app.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
     'CheckedOutToId': { type:'Edm.Int32',nullable:true },
     'Name': { type:'Edm.String',nullable:true },
     'VirusStatus': { type:'Edm.String',nullable:true },
@@ -193,20 +193,20 @@
     'Version': { type:'Edm.String',nullable:true },
     'Title': { type:'Edm.String',nullable:true }
   });
-  $data.Entity.extend('Microsoft.SharePoint.DataService.DocumentLibrary2Item', {
+  $data.Entity.extend('app.DataService.DocumentLibrary2Item', {
     'Id': { key:true,type:'Edm.Int32',nullable:false,required:true },
     'ContentTypeID': { type:'Edm.String',nullable:true },
     'ContentType': { type:'Edm.String',nullable:true },
     'Created': { type:'Edm.DateTime',nullable:true },
-    'CreatedBy': { type:'Microsoft.SharePoint.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
+    'CreatedBy': { type:'app.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
     'CreatedById': { type:'Edm.Int32',nullable:true },
     'Modified': { type:'Edm.DateTime',nullable:true },
-    'ModifiedBy': { type:'Microsoft.SharePoint.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
+    'ModifiedBy': { type:'app.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
     'ModifiedById': { type:'Edm.Int32',nullable:true },
     'CopySource': { type:'Edm.String',nullable:true },
     'ApprovalStatus': { type:'Edm.String',nullable:true },
     'Path': { type:'Edm.String',nullable:true },
-    'CheckedOutTo': { type:'Microsoft.SharePoint.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
+    'CheckedOutTo': { type:'app.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
     'CheckedOutToId': { type:'Edm.Int32',nullable:true },
     'Name': { type:'Edm.String',nullable:true },
     'VirusStatus': { type:'Edm.String',nullable:true },
@@ -215,20 +215,20 @@
     'Version': { type:'Edm.String',nullable:true },
     'Title': { type:'Edm.String',nullable:true }
   });
-  $data.Entity.extend('Microsoft.SharePoint.DataService.FpdatasourcesItem', {
+  $data.Entity.extend('app.DataService.FpdatasourcesItem', {
     'Id': { key:true,type:'Edm.Int32',nullable:false,required:true },
     'ContentTypeID': { type:'Edm.String',nullable:true },
     'ContentType': { type:'Edm.String',nullable:true },
     'Created': { type:'Edm.DateTime',nullable:true },
-    'CreatedBy': { type:'Microsoft.SharePoint.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
+    'CreatedBy': { type:'app.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
     'CreatedById': { type:'Edm.Int32',nullable:true },
     'Modified': { type:'Edm.DateTime',nullable:true },
-    'ModifiedBy': { type:'Microsoft.SharePoint.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
+    'ModifiedBy': { type:'app.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
     'ModifiedById': { type:'Edm.Int32',nullable:true },
     'CopySource': { type:'Edm.String',nullable:true },
     'ApprovalStatus': { type:'Edm.String',nullable:true },
     'Path': { type:'Edm.String',nullable:true },
-    'CheckedOutTo': { type:'Microsoft.SharePoint.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
+    'CheckedOutTo': { type:'app.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
     'CheckedOutToId': { type:'Edm.Int32',nullable:true },
     'Name': { type:'Edm.String',nullable:true },
     'VirusStatus': { type:'Edm.String',nullable:true },
@@ -236,69 +236,69 @@
     'Owshiddenversion': { type:'Edm.Int32',nullable:true,concurrencyMode:$data.ConcurrencyMode.Fixed },
     'Version': { type:'Edm.String',nullable:true }
   });
-  $data.Entity.extend('Microsoft.SharePoint.DataService.FunnyÜÖÄüöäNameItem', {
+  $data.Entity.extend('app.DataService.FunnyÜÖÄüöäNameItem', {
     'Id': { key:true,type:'Edm.Int32',nullable:false,required:true },
     'ContentTypeID': { type:'Edm.String',nullable:true },
     'ContentType': { type:'Edm.String',nullable:true },
     'Title': { type:'Edm.String',nullable:true },
     'Modified': { type:'Edm.DateTime',nullable:true },
     'Created': { type:'Edm.DateTime',nullable:true },
-    'CreatedBy': { type:'Microsoft.SharePoint.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
+    'CreatedBy': { type:'app.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
     'CreatedById': { type:'Edm.Int32',nullable:true },
-    'ModifiedBy': { type:'Microsoft.SharePoint.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
+    'ModifiedBy': { type:'app.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
     'ModifiedById': { type:'Edm.Int32',nullable:true },
     'Owshiddenversion': { type:'Edm.Int32',nullable:true,concurrencyMode:$data.ConcurrencyMode.Fixed },
     'Version': { type:'Edm.String',nullable:true },
-    'Attachments': { type:'Array',elementType:'Microsoft.SharePoint.DataService.AttachmentsItem',inverseProperty:'$$unbound' },
+    'Attachments': { type:'Array',elementType:'app.DataService.AttachmentsItem',inverseProperty:'$$unbound' },
     'Path': { type:'Edm.String',nullable:true }
   });
-  $data.Entity.extend('Microsoft.SharePoint.DataService.IssuesItem', {
+  $data.Entity.extend('app.DataService.IssuesItem', {
     'Id': { key:true,type:'Edm.Int32',nullable:false,required:true },
     'ContentTypeID': { type:'Edm.String',nullable:true },
     'ContentType': { type:'Edm.String',nullable:true },
     'Title': { type:'Edm.String',nullable:true },
     'Modified': { type:'Edm.DateTime',nullable:true },
     'Created': { type:'Edm.DateTime',nullable:true },
-    'CreatedBy': { type:'Microsoft.SharePoint.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
+    'CreatedBy': { type:'app.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
     'CreatedById': { type:'Edm.Int32',nullable:true },
-    'ModifiedBy': { type:'Microsoft.SharePoint.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
+    'ModifiedBy': { type:'app.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
     'ModifiedById': { type:'Edm.Int32',nullable:true },
     'Owshiddenversion': { type:'Edm.Int32',nullable:true,concurrencyMode:$data.ConcurrencyMode.Fixed },
     'Version': { type:'Edm.String',nullable:true },
-    'Attachments': { type:'Array',elementType:'Microsoft.SharePoint.DataService.AttachmentsItem',inverseProperty:'$$unbound' },
+    'Attachments': { type:'Array',elementType:'app.DataService.AttachmentsItem',inverseProperty:'$$unbound' },
     'Current': { type:'Edm.Boolean',nullable:true },
     'Path': { type:'Edm.String',nullable:true },
-    'AssignedTo': { type:'Microsoft.SharePoint.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
+    'AssignedTo': { type:'app.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
     'AssignedToId': { type:'Edm.Int32',nullable:true },
-    'IssueStatus': { type:'Microsoft.SharePoint.DataService.IssuesIssueStatusValue',inverseProperty:'$$unbound' },
+    'IssueStatus': { type:'app.DataService.IssuesIssueStatusValue',inverseProperty:'$$unbound' },
     'IssueStatusValue': { type:'Edm.String',nullable:true },
-    'Priority': { type:'Microsoft.SharePoint.DataService.IssuesPriorityValue',inverseProperty:'$$unbound' },
+    'Priority': { type:'app.DataService.IssuesPriorityValue',inverseProperty:'$$unbound' },
     'PriorityValue': { type:'Edm.String',nullable:true },
     'Description': { type:'Edm.String',nullable:true },
-    'Category': { type:'Microsoft.SharePoint.DataService.IssuesCategoryValue',inverseProperty:'$$unbound' },
+    'Category': { type:'app.DataService.IssuesCategoryValue',inverseProperty:'$$unbound' },
     'CategoryValue': { type:'Edm.String',nullable:true },
     'DueDate': { type:'Edm.DateTime',nullable:true },
-    'RelatedIssues': { type:'Array',elementType:'Microsoft.SharePoint.DataService.IssuesItem',inverseProperty:'$$unbound' },
+    'RelatedIssues': { type:'Array',elementType:'app.DataService.IssuesItem',inverseProperty:'$$unbound' },
     'Comments': { type:'Edm.String',nullable:true }
   });
-  $data.Entity.extend('Microsoft.SharePoint.DataService.IssuesCategoryValue', {
+  $data.Entity.extend('app.DataService.IssuesCategoryValue', {
     'Value': { key:true,type:'Edm.String',nullable:false,required:true }
   });
-  $data.Entity.extend('Microsoft.SharePoint.DataService.IssuesIssueStatusValue', {
+  $data.Entity.extend('app.DataService.IssuesIssueStatusValue', {
     'Value': { key:true,type:'Edm.String',nullable:false,required:true }
   });
-  $data.Entity.extend('Microsoft.SharePoint.DataService.IssuesPriorityValue', {
+  $data.Entity.extend('app.DataService.IssuesPriorityValue', {
     'Value': { key:true,type:'Edm.String',nullable:false,required:true }
   });
-  $data.Entity.extend('Microsoft.SharePoint.DataService.LinksItem', {
+  $data.Entity.extend('app.DataService.LinksItem', {
     'Id': { key:true,type:'Edm.Int32',nullable:false,required:true },
     'ContentTypeID': { type:'Edm.String',nullable:true },
     'ContentType': { type:'Edm.String',nullable:true },
     'Modified': { type:'Edm.DateTime',nullable:true },
     'Created': { type:'Edm.DateTime',nullable:true },
-    'CreatedBy': { type:'Microsoft.SharePoint.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
+    'CreatedBy': { type:'app.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
     'CreatedById': { type:'Edm.Int32',nullable:true },
-    'ModifiedBy': { type:'Microsoft.SharePoint.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
+    'ModifiedBy': { type:'app.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
     'ModifiedById': { type:'Edm.Int32',nullable:true },
     'Owshiddenversion': { type:'Edm.Int32',nullable:true,concurrencyMode:$data.ConcurrencyMode.Fixed },
     'Version': { type:'Edm.String',nullable:true },
@@ -306,20 +306,20 @@
     'URL': { type:'Edm.String',nullable:true },
     'Notes': { type:'Edm.String',nullable:true }
   });
-  $data.Entity.extend('Microsoft.SharePoint.DataService.ListTemplateGalleryItem', {
+  $data.Entity.extend('app.DataService.ListTemplateGalleryItem', {
     'Id': { key:true,type:'Edm.Int32',nullable:false,required:true },
     'ContentTypeID': { type:'Edm.String',nullable:true },
     'ContentType': { type:'Edm.String',nullable:true },
     'Created': { type:'Edm.DateTime',nullable:true },
-    'CreatedBy': { type:'Microsoft.SharePoint.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
+    'CreatedBy': { type:'app.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
     'CreatedById': { type:'Edm.Int32',nullable:true },
     'Modified': { type:'Edm.DateTime',nullable:true },
-    'ModifiedBy': { type:'Microsoft.SharePoint.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
+    'ModifiedBy': { type:'app.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
     'ModifiedById': { type:'Edm.Int32',nullable:true },
     'CopySource': { type:'Edm.String',nullable:true },
     'ApprovalStatus': { type:'Edm.String',nullable:true },
     'Path': { type:'Edm.String',nullable:true },
-    'CheckedOutTo': { type:'Microsoft.SharePoint.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
+    'CheckedOutTo': { type:'app.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
     'CheckedOutToId': { type:'Edm.Int32',nullable:true },
     'Name': { type:'Edm.String',nullable:true },
     'VirusStatus': { type:'Edm.String',nullable:true },
@@ -333,20 +333,20 @@
     'ProductVersion': { type:'Edm.Double',nullable:true },
     'FeatureID': { type:'Edm.Guid',nullable:true }
   });
-  $data.Entity.extend('Microsoft.SharePoint.DataService.MasterPageGalleryItem', {
+  $data.Entity.extend('app.DataService.MasterPageGalleryItem', {
     'Id': { key:true,type:'Edm.Int32',nullable:false,required:true },
     'ContentTypeID': { type:'Edm.String',nullable:true },
     'ContentType': { type:'Edm.String',nullable:true },
     'Created': { type:'Edm.DateTime',nullable:true },
-    'CreatedBy': { type:'Microsoft.SharePoint.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
+    'CreatedBy': { type:'app.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
     'CreatedById': { type:'Edm.Int32',nullable:true },
     'Modified': { type:'Edm.DateTime',nullable:true },
-    'ModifiedBy': { type:'Microsoft.SharePoint.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
+    'ModifiedBy': { type:'app.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
     'ModifiedById': { type:'Edm.Int32',nullable:true },
     'CopySource': { type:'Edm.String',nullable:true },
     'ApprovalStatus': { type:'Edm.String',nullable:true },
     'Path': { type:'Edm.String',nullable:true },
-    'CheckedOutTo': { type:'Microsoft.SharePoint.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
+    'CheckedOutTo': { type:'app.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
     'CheckedOutToId': { type:'Edm.Int32',nullable:true },
     'Name': { type:'Edm.String',nullable:true },
     'VirusStatus': { type:'Edm.String',nullable:true },
@@ -354,57 +354,57 @@
     'Owshiddenversion': { type:'Edm.Int32',nullable:true,concurrencyMode:$data.ConcurrencyMode.Fixed },
     'Version': { type:'Edm.String',nullable:true },
     'Description': { type:'Edm.String',nullable:true },
-    'CompatibleUIVersionS': { type:'Array',elementType:'Microsoft.SharePoint.DataService.MasterPageGalleryCompatibleUIVersionSValue',inverseProperty:'$$unbound' }
+    'CompatibleUIVersionS': { type:'Array',elementType:'app.DataService.MasterPageGalleryCompatibleUIVersionSValue',inverseProperty:'$$unbound' }
   });
-  $data.Entity.extend('Microsoft.SharePoint.DataService.MasterPageGalleryCompatibleUIVersionSValue', {
+  $data.Entity.extend('app.DataService.MasterPageGalleryCompatibleUIVersionSValue', {
     'Value': { key:true,type:'Edm.String',nullable:false,required:true }
   });
-  $data.Entity.extend('Microsoft.SharePoint.DataService.ProjectTasksItem', {
+  $data.Entity.extend('app.DataService.ProjectTasksItem', {
     'Id': { key:true,type:'Edm.Int32',nullable:false,required:true },
     'ContentTypeID': { type:'Edm.String',nullable:true },
     'ContentType': { type:'Edm.String',nullable:true },
     'Title': { type:'Edm.String',nullable:true },
     'Modified': { type:'Edm.DateTime',nullable:true },
     'Created': { type:'Edm.DateTime',nullable:true },
-    'CreatedBy': { type:'Microsoft.SharePoint.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
+    'CreatedBy': { type:'app.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
     'CreatedById': { type:'Edm.Int32',nullable:true },
-    'ModifiedBy': { type:'Microsoft.SharePoint.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
+    'ModifiedBy': { type:'app.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
     'ModifiedById': { type:'Edm.Int32',nullable:true },
     'Owshiddenversion': { type:'Edm.Int32',nullable:true,concurrencyMode:$data.ConcurrencyMode.Fixed },
     'Version': { type:'Edm.String',nullable:true },
-    'Attachments': { type:'Array',elementType:'Microsoft.SharePoint.DataService.AttachmentsItem',inverseProperty:'$$unbound' },
+    'Attachments': { type:'Array',elementType:'app.DataService.AttachmentsItem',inverseProperty:'$$unbound' },
     'Path': { type:'Edm.String',nullable:true },
-    'Predecessors': { type:'Array',elementType:'Microsoft.SharePoint.DataService.ProjectTasksItem',inverseProperty:'$$unbound' },
-    'Priority': { type:'Microsoft.SharePoint.DataService.ProjectTasksPriorityValue',inverseProperty:'$$unbound' },
+    'Predecessors': { type:'Array',elementType:'app.DataService.ProjectTasksItem',inverseProperty:'$$unbound' },
+    'Priority': { type:'app.DataService.ProjectTasksPriorityValue',inverseProperty:'$$unbound' },
     'PriorityValue': { type:'Edm.String',nullable:true },
-    'TaskStatus': { type:'Microsoft.SharePoint.DataService.ProjectTasksTaskStatusValue',inverseProperty:'$$unbound' },
+    'TaskStatus': { type:'app.DataService.ProjectTasksTaskStatusValue',inverseProperty:'$$unbound' },
     'TaskStatusValue': { type:'Edm.String',nullable:true },
     'Complete': { type:'Edm.Double',nullable:true },
-    'AssignedTo': { type:'Array',elementType:'Microsoft.SharePoint.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
+    'AssignedTo': { type:'Array',elementType:'app.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
     'Description': { type:'Edm.String',nullable:true },
     'StartDate': { type:'Edm.DateTime',nullable:true },
     'DueDate': { type:'Edm.DateTime',nullable:true }
   });
-  $data.Entity.extend('Microsoft.SharePoint.DataService.ProjectTasksPriorityValue', {
+  $data.Entity.extend('app.DataService.ProjectTasksPriorityValue', {
     'Value': { key:true,type:'Edm.String',nullable:false,required:true }
   });
-  $data.Entity.extend('Microsoft.SharePoint.DataService.ProjectTasksTaskStatusValue', {
+  $data.Entity.extend('app.DataService.ProjectTasksTaskStatusValue', {
     'Value': { key:true,type:'Edm.String',nullable:false,required:true }
   });
-  $data.Entity.extend('Microsoft.SharePoint.DataService.ServiceFilesItem', {
+  $data.Entity.extend('app.DataService.ServiceFilesItem', {
     'Id': { key:true,type:'Edm.Int32',nullable:false,required:true },
     'ContentTypeID': { type:'Edm.String',nullable:true },
     'ContentType': { type:'Edm.String',nullable:true },
     'Created': { type:'Edm.DateTime',nullable:true },
-    'CreatedBy': { type:'Microsoft.SharePoint.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
+    'CreatedBy': { type:'app.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
     'CreatedById': { type:'Edm.Int32',nullable:true },
     'Modified': { type:'Edm.DateTime',nullable:true },
-    'ModifiedBy': { type:'Microsoft.SharePoint.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
+    'ModifiedBy': { type:'app.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
     'ModifiedById': { type:'Edm.Int32',nullable:true },
     'CopySource': { type:'Edm.String',nullable:true },
     'ApprovalStatus': { type:'Edm.String',nullable:true },
     'Path': { type:'Edm.String',nullable:true },
-    'CheckedOutTo': { type:'Microsoft.SharePoint.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
+    'CheckedOutTo': { type:'app.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
     'CheckedOutToId': { type:'Edm.Int32',nullable:true },
     'Name': { type:'Edm.String',nullable:true },
     'VirusStatus': { type:'Edm.String',nullable:true },
@@ -413,20 +413,20 @@
     'Version': { type:'Edm.String',nullable:true },
     'Title': { type:'Edm.String',nullable:true }
   });
-  $data.Entity.extend('Microsoft.SharePoint.DataService.SitePagesItem', {
+  $data.Entity.extend('app.DataService.SitePagesItem', {
     'Id': { key:true,type:'Edm.Int32',nullable:false,required:true },
     'ContentTypeID': { type:'Edm.String',nullable:true },
     'ContentType': { type:'Edm.String',nullable:true },
     'Created': { type:'Edm.DateTime',nullable:true },
-    'CreatedBy': { type:'Microsoft.SharePoint.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
+    'CreatedBy': { type:'app.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
     'CreatedById': { type:'Edm.Int32',nullable:true },
     'Modified': { type:'Edm.DateTime',nullable:true },
-    'ModifiedBy': { type:'Microsoft.SharePoint.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
+    'ModifiedBy': { type:'app.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
     'ModifiedById': { type:'Edm.Int32',nullable:true },
     'CopySource': { type:'Edm.String',nullable:true },
     'ApprovalStatus': { type:'Edm.String',nullable:true },
     'Path': { type:'Edm.String',nullable:true },
-    'CheckedOutTo': { type:'Microsoft.SharePoint.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
+    'CheckedOutTo': { type:'app.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
     'CheckedOutToId': { type:'Edm.Int32',nullable:true },
     'Name': { type:'Edm.String',nullable:true },
     'VirusStatus': { type:'Edm.String',nullable:true },
@@ -435,20 +435,20 @@
     'Version': { type:'Edm.String',nullable:true },
     'WikiContent': { type:'Edm.String',nullable:true }
   });
-  $data.Entity.extend('Microsoft.SharePoint.DataService.SolutionGalleryItem', {
+  $data.Entity.extend('app.DataService.SolutionGalleryItem', {
     'Id': { key:true,type:'Edm.Int32',nullable:false,required:true },
     'ContentTypeID': { type:'Edm.String',nullable:true },
     'ContentType': { type:'Edm.String',nullable:true },
     'Created': { type:'Edm.DateTime',nullable:true },
-    'CreatedBy': { type:'Microsoft.SharePoint.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
+    'CreatedBy': { type:'app.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
     'CreatedById': { type:'Edm.Int32',nullable:true },
     'Modified': { type:'Edm.DateTime',nullable:true },
-    'ModifiedBy': { type:'Microsoft.SharePoint.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
+    'ModifiedBy': { type:'app.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
     'ModifiedById': { type:'Edm.Int32',nullable:true },
     'CopySource': { type:'Edm.String',nullable:true },
     'ApprovalStatus': { type:'Edm.String',nullable:true },
     'Path': { type:'Edm.String',nullable:true },
-    'CheckedOutTo': { type:'Microsoft.SharePoint.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
+    'CheckedOutTo': { type:'app.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
     'CheckedOutToId': { type:'Edm.Int32',nullable:true },
     'Name': { type:'Edm.String',nullable:true },
     'VirusStatus': { type:'Edm.String',nullable:true },
@@ -460,20 +460,20 @@
     'Description': { type:'Edm.String',nullable:true },
     'Hash': { type:'Edm.String',nullable:true }
   });
-  $data.Entity.extend('Microsoft.SharePoint.DataService.StyleLibraryItem', {
+  $data.Entity.extend('app.DataService.StyleLibraryItem', {
     'Id': { key:true,type:'Edm.Int32',nullable:false,required:true },
     'ContentTypeID': { type:'Edm.String',nullable:true },
     'ContentType': { type:'Edm.String',nullable:true },
     'Created': { type:'Edm.DateTime',nullable:true },
-    'CreatedBy': { type:'Microsoft.SharePoint.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
+    'CreatedBy': { type:'app.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
     'CreatedById': { type:'Edm.Int32',nullable:true },
     'Modified': { type:'Edm.DateTime',nullable:true },
-    'ModifiedBy': { type:'Microsoft.SharePoint.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
+    'ModifiedBy': { type:'app.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
     'ModifiedById': { type:'Edm.Int32',nullable:true },
     'CopySource': { type:'Edm.String',nullable:true },
     'ApprovalStatus': { type:'Edm.String',nullable:true },
     'Path': { type:'Edm.String',nullable:true },
-    'CheckedOutTo': { type:'Microsoft.SharePoint.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
+    'CheckedOutTo': { type:'app.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
     'CheckedOutToId': { type:'Edm.Int32',nullable:true },
     'Name': { type:'Edm.String',nullable:true },
     'VirusStatus': { type:'Edm.String',nullable:true },
@@ -482,55 +482,55 @@
     'Version': { type:'Edm.String',nullable:true },
     'Title': { type:'Edm.String',nullable:true }
   });
-  $data.Entity.extend('Microsoft.SharePoint.DataService.TasksItem', {
+  $data.Entity.extend('app.DataService.TasksItem', {
     'Id': { key:true,type:'Edm.Int32',nullable:false,required:true },
     'ContentTypeID': { type:'Edm.String',nullable:true },
     'ContentType': { type:'Edm.String',nullable:true },
     'Title': { type:'Edm.String',nullable:true },
     'Modified': { type:'Edm.DateTime',nullable:true },
     'Created': { type:'Edm.DateTime',nullable:true },
-    'CreatedBy': { type:'Microsoft.SharePoint.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
+    'CreatedBy': { type:'app.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
     'CreatedById': { type:'Edm.Int32',nullable:true },
-    'ModifiedBy': { type:'Microsoft.SharePoint.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
+    'ModifiedBy': { type:'app.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
     'ModifiedById': { type:'Edm.Int32',nullable:true },
     'Owshiddenversion': { type:'Edm.Int32',nullable:true,concurrencyMode:$data.ConcurrencyMode.Fixed },
     'Version': { type:'Edm.String',nullable:true },
-    'Attachments': { type:'Array',elementType:'Microsoft.SharePoint.DataService.AttachmentsItem',inverseProperty:'$$unbound' },
+    'Attachments': { type:'Array',elementType:'app.DataService.AttachmentsItem',inverseProperty:'$$unbound' },
     'Path': { type:'Edm.String',nullable:true },
-    'Predecessors': { type:'Array',elementType:'Microsoft.SharePoint.DataService.TasksItem',inverseProperty:'$$unbound' },
-    'Priority': { type:'Microsoft.SharePoint.DataService.TasksPriorityValue',inverseProperty:'$$unbound' },
+    'Predecessors': { type:'Array',elementType:'app.DataService.TasksItem',inverseProperty:'$$unbound' },
+    'Priority': { type:'app.DataService.TasksPriorityValue',inverseProperty:'$$unbound' },
     'PriorityValue': { type:'Edm.String',nullable:true },
-    'Status': { type:'Microsoft.SharePoint.DataService.TasksStatusValue',inverseProperty:'$$unbound' },
+    'Status': { type:'app.DataService.TasksStatusValue',inverseProperty:'$$unbound' },
     'StatusValue': { type:'Edm.String',nullable:true },
     'Complete': { type:'Edm.Double',nullable:true },
-    'AssignedTo': { type:'Microsoft.SharePoint.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
+    'AssignedTo': { type:'app.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
     'AssignedToId': { type:'Edm.Int32',nullable:true },
-    'TaskGroup': { type:'Microsoft.SharePoint.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
+    'TaskGroup': { type:'app.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
     'TaskGroupId': { type:'Edm.Int32',nullable:true },
     'Description': { type:'Edm.String',nullable:true },
     'StartDate': { type:'Edm.DateTime',nullable:true },
     'DueDate': { type:'Edm.DateTime',nullable:true }
   });
-  $data.Entity.extend('Microsoft.SharePoint.DataService.TasksPriorityValue', {
+  $data.Entity.extend('app.DataService.TasksPriorityValue', {
     'Value': { key:true,type:'Edm.String',nullable:false,required:true }
   });
-  $data.Entity.extend('Microsoft.SharePoint.DataService.TasksStatusValue', {
+  $data.Entity.extend('app.DataService.TasksStatusValue', {
     'Value': { key:true,type:'Edm.String',nullable:false,required:true }
   });
-  $data.Entity.extend('Microsoft.SharePoint.DataService.ThemeGalleryItem', {
+  $data.Entity.extend('app.DataService.ThemeGalleryItem', {
     'Id': { key:true,type:'Edm.Int32',nullable:false,required:true },
     'ContentTypeID': { type:'Edm.String',nullable:true },
     'ContentType': { type:'Edm.String',nullable:true },
     'Created': { type:'Edm.DateTime',nullable:true },
-    'CreatedBy': { type:'Microsoft.SharePoint.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
+    'CreatedBy': { type:'app.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
     'CreatedById': { type:'Edm.Int32',nullable:true },
     'Modified': { type:'Edm.DateTime',nullable:true },
-    'ModifiedBy': { type:'Microsoft.SharePoint.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
+    'ModifiedBy': { type:'app.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
     'ModifiedById': { type:'Edm.Int32',nullable:true },
     'CopySource': { type:'Edm.String',nullable:true },
     'ApprovalStatus': { type:'Edm.String',nullable:true },
     'Path': { type:'Edm.String',nullable:true },
-    'CheckedOutTo': { type:'Microsoft.SharePoint.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
+    'CheckedOutTo': { type:'app.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
     'CheckedOutToId': { type:'Edm.Int32',nullable:true },
     'Name': { type:'Edm.String',nullable:true },
     'VirusStatus': { type:'Edm.String',nullable:true },
@@ -539,20 +539,20 @@
     'Version': { type:'Edm.String',nullable:true },
     'Description': { type:'Edm.String',nullable:true }
   });
-  $data.Entity.extend('Microsoft.SharePoint.DataService.UserInformationListItem', {
+  $data.Entity.extend('app.DataService.UserInformationListItem', {
     'Id': { key:true,type:'Edm.Int32',nullable:false,required:true },
     'ContentTypeID': { type:'Edm.String',nullable:true },
     'ContentType': { type:'Edm.String',nullable:true },
     'Name': { type:'Edm.String',nullable:true },
     'Modified': { type:'Edm.DateTime',nullable:true },
     'Created': { type:'Edm.DateTime',nullable:true },
-    'CreatedBy': { type:'Microsoft.SharePoint.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
+    'CreatedBy': { type:'app.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
     'CreatedById': { type:'Edm.Int32',nullable:true },
-    'ModifiedBy': { type:'Microsoft.SharePoint.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
+    'ModifiedBy': { type:'app.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
     'ModifiedById': { type:'Edm.Int32',nullable:true },
     'Owshiddenversion': { type:'Edm.Int32',nullable:true,concurrencyMode:$data.ConcurrencyMode.Fixed },
     'Version': { type:'Edm.String',nullable:true },
-    'Attachments': { type:'Array',elementType:'Microsoft.SharePoint.DataService.AttachmentsItem',inverseProperty:'$$unbound' },
+    'Attachments': { type:'Array',elementType:'app.DataService.AttachmentsItem',inverseProperty:'$$unbound' },
     'Path': { type:'Edm.String',nullable:true },
     'Account': { type:'Edm.String',nullable:true },
     'EMail': { type:'Edm.String',nullable:true },
@@ -565,20 +565,20 @@
     'Department': { type:'Edm.String',nullable:true },
     'JobTitle': { type:'Edm.String',nullable:true }
   });
-  $data.Entity.extend('Microsoft.SharePoint.DataService.WebPartGalleryItem', {
+  $data.Entity.extend('app.DataService.WebPartGalleryItem', {
     'Id': { key:true,type:'Edm.Int32',nullable:false,required:true },
     'ContentTypeID': { type:'Edm.String',nullable:true },
     'ContentType': { type:'Edm.String',nullable:true },
     'Created': { type:'Edm.DateTime',nullable:true },
-    'CreatedBy': { type:'Microsoft.SharePoint.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
+    'CreatedBy': { type:'app.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
     'CreatedById': { type:'Edm.Int32',nullable:true },
     'Modified': { type:'Edm.DateTime',nullable:true },
-    'ModifiedBy': { type:'Microsoft.SharePoint.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
+    'ModifiedBy': { type:'app.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
     'ModifiedById': { type:'Edm.Int32',nullable:true },
     'CopySource': { type:'Edm.String',nullable:true },
     'ApprovalStatus': { type:'Edm.String',nullable:true },
     'Path': { type:'Edm.String',nullable:true },
-    'CheckedOutTo': { type:'Microsoft.SharePoint.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
+    'CheckedOutTo': { type:'app.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
     'CheckedOutToId': { type:'Edm.Int32',nullable:true },
     'Name': { type:'Edm.String',nullable:true },
     'VirusStatus': { type:'Edm.String',nullable:true },
@@ -587,30 +587,30 @@
     'Version': { type:'Edm.String',nullable:true },
     'Title': { type:'Edm.String',nullable:true },
     'Description': { type:'Edm.String',nullable:true },
-    'Group': { type:'Microsoft.SharePoint.DataService.WebPartGalleryGroupValue',inverseProperty:'$$unbound' },
+    'Group': { type:'app.DataService.WebPartGalleryGroupValue',inverseProperty:'$$unbound' },
     'GroupValue': { type:'Edm.String',nullable:true },
-    'RecommendationSettings': { type:'Array',elementType:'Microsoft.SharePoint.DataService.WebPartGalleryRecommendationSettingsValue',inverseProperty:'$$unbound' }
+    'RecommendationSettings': { type:'Array',elementType:'app.DataService.WebPartGalleryRecommendationSettingsValue',inverseProperty:'$$unbound' }
   });
-  $data.Entity.extend('Microsoft.SharePoint.DataService.WebPartGalleryGroupValue', {
+  $data.Entity.extend('app.DataService.WebPartGalleryGroupValue', {
     'Value': { key:true,type:'Edm.String',nullable:false,required:true }
   });
-  $data.Entity.extend('Microsoft.SharePoint.DataService.WebPartGalleryRecommendationSettingsValue', {
+  $data.Entity.extend('app.DataService.WebPartGalleryRecommendationSettingsValue', {
     'Value': { key:true,type:'Edm.String',nullable:false,required:true }
   });
-  $data.Entity.extend('Microsoft.SharePoint.DataService.ZurbItem', {
+  $data.Entity.extend('app.DataService.ZurbItem', {
     'Id': { key:true,type:'Edm.Int32',nullable:false,required:true },
     'ContentTypeID': { type:'Edm.String',nullable:true },
     'ContentType': { type:'Edm.String',nullable:true },
     'Created': { type:'Edm.DateTime',nullable:true },
-    'CreatedBy': { type:'Microsoft.SharePoint.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
+    'CreatedBy': { type:'app.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
     'CreatedById': { type:'Edm.Int32',nullable:true },
     'Modified': { type:'Edm.DateTime',nullable:true },
-    'ModifiedBy': { type:'Microsoft.SharePoint.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
+    'ModifiedBy': { type:'app.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
     'ModifiedById': { type:'Edm.Int32',nullable:true },
     'CopySource': { type:'Edm.String',nullable:true },
     'ApprovalStatus': { type:'Edm.String',nullable:true },
     'Path': { type:'Edm.String',nullable:true },
-    'CheckedOutTo': { type:'Microsoft.SharePoint.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
+    'CheckedOutTo': { type:'app.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
     'CheckedOutToId': { type:'Edm.Int32',nullable:true },
     'Name': { type:'Edm.String',nullable:true },
     'VirusStatus': { type:'Edm.String',nullable:true },
@@ -619,20 +619,20 @@
     'Version': { type:'Edm.String',nullable:true },
     'Title': { type:'Edm.String',nullable:true }
   });
-  $data.Entity.extend('Microsoft.SharePoint.DataService.ZurbV2Item', {
+  $data.Entity.extend('app.DataService.ZurbV2Item', {
     'Id': { key:true,type:'Edm.Int32',nullable:false,required:true },
     'ContentTypeID': { type:'Edm.String',nullable:true },
     'ContentType': { type:'Edm.String',nullable:true },
     'Created': { type:'Edm.DateTime',nullable:true },
-    'CreatedBy': { type:'Microsoft.SharePoint.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
+    'CreatedBy': { type:'app.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
     'CreatedById': { type:'Edm.Int32',nullable:true },
     'Modified': { type:'Edm.DateTime',nullable:true },
-    'ModifiedBy': { type:'Microsoft.SharePoint.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
+    'ModifiedBy': { type:'app.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
     'ModifiedById': { type:'Edm.Int32',nullable:true },
     'CopySource': { type:'Edm.String',nullable:true },
     'ApprovalStatus': { type:'Edm.String',nullable:true },
     'Path': { type:'Edm.String',nullable:true },
-    'CheckedOutTo': { type:'Microsoft.SharePoint.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
+    'CheckedOutTo': { type:'app.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
     'CheckedOutToId': { type:'Edm.Int32',nullable:true },
     'Name': { type:'Edm.String',nullable:true },
     'VirusStatus': { type:'Edm.String',nullable:true },
@@ -641,20 +641,20 @@
     'Version': { type:'Edm.String',nullable:true },
     'Title': { type:'Edm.String',nullable:true }
   });
-  $data.Entity.extend('Microsoft.SharePoint.DataService.ZurbV3Item', {
+  $data.Entity.extend('app.DataService.ZurbV3Item', {
     'Id': { key:true,type:'Edm.Int32',nullable:false,required:true },
     'ContentTypeID': { type:'Edm.String',nullable:true },
     'ContentType': { type:'Edm.String',nullable:true },
     'Created': { type:'Edm.DateTime',nullable:true },
-    'CreatedBy': { type:'Microsoft.SharePoint.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
+    'CreatedBy': { type:'app.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
     'CreatedById': { type:'Edm.Int32',nullable:true },
     'Modified': { type:'Edm.DateTime',nullable:true },
-    'ModifiedBy': { type:'Microsoft.SharePoint.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
+    'ModifiedBy': { type:'app.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
     'ModifiedById': { type:'Edm.Int32',nullable:true },
     'CopySource': { type:'Edm.String',nullable:true },
     'ApprovalStatus': { type:'Edm.String',nullable:true },
     'Path': { type:'Edm.String',nullable:true },
-    'CheckedOutTo': { type:'Microsoft.SharePoint.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
+    'CheckedOutTo': { type:'app.DataService.UserInformationListItem',inverseProperty:'$$unbound' },
     'CheckedOutToId': { type:'Edm.Int32',nullable:true },
     'Name': { type:'Edm.String',nullable:true },
     'VirusStatus': { type:'Edm.String',nullable:true },
@@ -663,43 +663,43 @@
     'Version': { type:'Edm.String',nullable:true },
     'Title': { type:'Edm.String',nullable:true }
   });
-  $data.EntityContext.extend('app.jaydata.MetroStyleDataContext', {
-    Announcements: { type: $data.EntitySet, elementType: Microsoft.SharePoint.DataService.AnnouncementsItem },
-      Attachments: { type: $data.EntitySet, elementType: Microsoft.SharePoint.DataService.AttachmentsItem },
-      Calendar: { type: $data.EntitySet, elementType: Microsoft.SharePoint.DataService.CalendarItem },
-      CalendarCategory: { type: $data.EntitySet, elementType: Microsoft.SharePoint.DataService.CalendarCategoryValue },
-      Contacts: { type: $data.EntitySet, elementType: Microsoft.SharePoint.DataService.ContactsItem },
-      Custom1: { type: $data.EntitySet, elementType: Microsoft.SharePoint.DataService.Custom1Item },
-      DocumentLibrary1: { type: $data.EntitySet, elementType: Microsoft.SharePoint.DataService.DocumentLibrary1Item },
-      DocumentLibrary2: { type: $data.EntitySet, elementType: Microsoft.SharePoint.DataService.DocumentLibrary2Item },
-      Fpdatasources: { type: $data.EntitySet, elementType: Microsoft.SharePoint.DataService.FpdatasourcesItem },
-      FunnyÜÖÄüöäName: { type: $data.EntitySet, elementType: Microsoft.SharePoint.DataService.FunnyÜÖÄüöäNameItem },
-      Issues: { type: $data.EntitySet, elementType: Microsoft.SharePoint.DataService.IssuesItem },
-      IssuesCategory: { type: $data.EntitySet, elementType: Microsoft.SharePoint.DataService.IssuesCategoryValue },
-      IssuesIssueStatus: { type: $data.EntitySet, elementType: Microsoft.SharePoint.DataService.IssuesIssueStatusValue },
-      IssuesPriority: { type: $data.EntitySet, elementType: Microsoft.SharePoint.DataService.IssuesPriorityValue },
-      Links: { type: $data.EntitySet, elementType: Microsoft.SharePoint.DataService.LinksItem },
-      ListTemplateGallery: { type: $data.EntitySet, elementType: Microsoft.SharePoint.DataService.ListTemplateGalleryItem },
-      MasterPageGallery: { type: $data.EntitySet, elementType: Microsoft.SharePoint.DataService.MasterPageGalleryItem },
-      MasterPageGalleryCompatibleUIVersionS: { type: $data.EntitySet, elementType: Microsoft.SharePoint.DataService.MasterPageGalleryCompatibleUIVersionSValue },
-      ProjectTasks: { type: $data.EntitySet, elementType: Microsoft.SharePoint.DataService.ProjectTasksItem },
-      ProjectTasksPriority: { type: $data.EntitySet, elementType: Microsoft.SharePoint.DataService.ProjectTasksPriorityValue },
-      ProjectTasksTaskStatus: { type: $data.EntitySet, elementType: Microsoft.SharePoint.DataService.ProjectTasksTaskStatusValue },
-      ServiceFiles: { type: $data.EntitySet, elementType: Microsoft.SharePoint.DataService.ServiceFilesItem },
-      SitePages: { type: $data.EntitySet, elementType: Microsoft.SharePoint.DataService.SitePagesItem },
-      SolutionGallery: { type: $data.EntitySet, elementType: Microsoft.SharePoint.DataService.SolutionGalleryItem },
-      StyleLibrary: { type: $data.EntitySet, elementType: Microsoft.SharePoint.DataService.StyleLibraryItem },
-      Tasks: { type: $data.EntitySet, elementType: Microsoft.SharePoint.DataService.TasksItem },
-      TasksPriority: { type: $data.EntitySet, elementType: Microsoft.SharePoint.DataService.TasksPriorityValue },
-      TasksStatus: { type: $data.EntitySet, elementType: Microsoft.SharePoint.DataService.TasksStatusValue },
-      ThemeGallery: { type: $data.EntitySet, elementType: Microsoft.SharePoint.DataService.ThemeGalleryItem },
-      UserInformationList: { type: $data.EntitySet, elementType: Microsoft.SharePoint.DataService.UserInformationListItem },
-      WebPartGallery: { type: $data.EntitySet, elementType: Microsoft.SharePoint.DataService.WebPartGalleryItem },
-      WebPartGalleryGroup: { type: $data.EntitySet, elementType: Microsoft.SharePoint.DataService.WebPartGalleryGroupValue },
-      WebPartGalleryRecommendationSettings: { type: $data.EntitySet, elementType: Microsoft.SharePoint.DataService.WebPartGalleryRecommendationSettingsValue },
-      Zurb: { type: $data.EntitySet, elementType: Microsoft.SharePoint.DataService.ZurbItem },
-      ZurbV2: { type: $data.EntitySet, elementType: Microsoft.SharePoint.DataService.ZurbV2Item },
-      ZurbV3: { type: $data.EntitySet, elementType: Microsoft.SharePoint.DataService.ZurbV3Item },
+  $data.EntityContext.extend('app.MetroStyleDataContext', {
+    Announcements: { type: $data.EntitySet, elementType: app.DataService.AnnouncementsItem },
+      Attachments: { type: $data.EntitySet, elementType: app.DataService.AttachmentsItem },
+      Calendar: { type: $data.EntitySet, elementType: app.DataService.CalendarItem },
+      CalendarCategory: { type: $data.EntitySet, elementType: app.DataService.CalendarCategoryValue },
+      Contacts: { type: $data.EntitySet, elementType: app.DataService.ContactsItem },
+      Custom1: { type: $data.EntitySet, elementType: app.DataService.Custom1Item },
+      DocumentLibrary1: { type: $data.EntitySet, elementType: app.DataService.DocumentLibrary1Item },
+      DocumentLibrary2: { type: $data.EntitySet, elementType: app.DataService.DocumentLibrary2Item },
+      Fpdatasources: { type: $data.EntitySet, elementType: app.DataService.FpdatasourcesItem },
+      FunnyÜÖÄüöäName: { type: $data.EntitySet, elementType: app.DataService.FunnyÜÖÄüöäNameItem },
+      Issues: { type: $data.EntitySet, elementType: app.DataService.IssuesItem },
+      IssuesCategory: { type: $data.EntitySet, elementType: app.DataService.IssuesCategoryValue },
+      IssuesIssueStatus: { type: $data.EntitySet, elementType: app.DataService.IssuesIssueStatusValue },
+      IssuesPriority: { type: $data.EntitySet, elementType: app.DataService.IssuesPriorityValue },
+      Links: { type: $data.EntitySet, elementType: app.DataService.LinksItem },
+      ListTemplateGallery: { type: $data.EntitySet, elementType: app.DataService.ListTemplateGalleryItem },
+      MasterPageGallery: { type: $data.EntitySet, elementType: app.DataService.MasterPageGalleryItem },
+      MasterPageGalleryCompatibleUIVersionS: { type: $data.EntitySet, elementType: app.DataService.MasterPageGalleryCompatibleUIVersionSValue },
+      ProjectTasks: { type: $data.EntitySet, elementType: app.DataService.ProjectTasksItem },
+      ProjectTasksPriority: { type: $data.EntitySet, elementType: app.DataService.ProjectTasksPriorityValue },
+      ProjectTasksTaskStatus: { type: $data.EntitySet, elementType: app.DataService.ProjectTasksTaskStatusValue },
+      ServiceFiles: { type: $data.EntitySet, elementType: app.DataService.ServiceFilesItem },
+      SitePages: { type: $data.EntitySet, elementType: app.DataService.SitePagesItem },
+      SolutionGallery: { type: $data.EntitySet, elementType: app.DataService.SolutionGalleryItem },
+      StyleLibrary: { type: $data.EntitySet, elementType: app.DataService.StyleLibraryItem },
+      Tasks: { type: $data.EntitySet, elementType: app.DataService.TasksItem },
+      TasksPriority: { type: $data.EntitySet, elementType: app.DataService.TasksPriorityValue },
+      TasksStatus: { type: $data.EntitySet, elementType: app.DataService.TasksStatusValue },
+      ThemeGallery: { type: $data.EntitySet, elementType: app.DataService.ThemeGalleryItem },
+      UserInformationList: { type: $data.EntitySet, elementType: app.DataService.UserInformationListItem },
+      WebPartGallery: { type: $data.EntitySet, elementType: app.DataService.WebPartGalleryItem },
+      WebPartGalleryGroup: { type: $data.EntitySet, elementType: app.DataService.WebPartGalleryGroupValue },
+      WebPartGalleryRecommendationSettings: { type: $data.EntitySet, elementType: app.DataService.WebPartGalleryRecommendationSettingsValue },
+      Zurb: { type: $data.EntitySet, elementType: app.DataService.ZurbItem },
+      ZurbV2: { type: $data.EntitySet, elementType: app.DataService.ZurbV2Item },
+      ZurbV3: { type: $data.EntitySet, elementType: app.DataService.ZurbV3Item },
       ConvertListTitleToEntitySetName: $data.EntityContext.generateServiceOperation({ serviceName:'ConvertListTitleToEntitySetName', returnType: 
         'Edm.String'
       , params: [{ listTitle: 'Edm.String' }], method: 'GET'})
