@@ -15,6 +15,7 @@ requirejs.config({
         knockout : [
             '//ajax.aspnetcdn.com/ajax/knockout/knockout-2.1.0',
             'knockout-2.1.0'],
+        kocBH: '../js/app/CustomBindingHandler',
         sammy : 'sammy-0.7.1.min',
         prettyDate : 'jquery.prettyDate',
         metrojs : 'MetroJs',
@@ -51,7 +52,7 @@ requirejs.config({
     }
 });
 
-require(['jquery', 'app', 'knockout', 'jaydata', 'prettyDate', 'metrojs' ], function ($, app, ko) {
+require(['jquery', 'app', 'knockout', 'prettyDate', 'metrojs' ], function ($, app, ko) {
     window.ko =  ko;
     // we can safely kick of the app even before document.ready
     app.init();
