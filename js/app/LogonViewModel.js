@@ -2,16 +2,21 @@ define(['knockout'], function (ko) {
     "use strict";
 
     return function () {
-        this.userId = ko.observable();
-        this.userId = app.configMap.userId;
+        var userId, loginURL;
 
+        userId = ko.observable(app.configMap.userId).publishOn('userId');
 
-        this.showLogon = ko.computed(function () {
-            return this.userId === 'anonymous';
-        }, this);
+        // Behaviours
 
-        this.loginURL = ko.computed(function () {
+        loginURL = ko.computed(function () {
             return '../_layouts/Authenticate.aspx?Source=' + encodeURIComponent(location.pathname)
-        }, this);
+        });
+
+
+        // Return public methods
+        return {
+            userId : userId,
+            loginURL : loginURL
+        }
     }
 });
