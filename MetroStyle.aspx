@@ -83,6 +83,7 @@
 <!-- Draft version -->
 <div class="row" id="listingView">
     <h3 data-bind="text: $root.selectedList"> No list selected</h3>
+    <h3 class="subheader">Debugging info:</h3>
     <div class="debug" data-bind="text: ko.toJSON($root)">
     </div>
     <table>
@@ -94,11 +95,12 @@
             <th>CreatedBy</th>
         </tr>
         </thead>
-        <tbody data-bind="foreach: allItems">
+        <tbody data-bind="foreach: { data: allItems, afterRender: handleAfterRender }">
         <tr>
             <td><a href="#" data-bind="text: Id"></a></td>
             <td data-bind="text: Title"></td>
-            <td data-bind="text: Created"></td>
+            <td class="prettyDate"
+                data-bind="text: Created, attr: {title: new Date(Created).toISOString().substring(0,19) + 'Z'}"></td>
             <td data-bind="text: CreatedBy"></td>
         </tr>
         </tbody>

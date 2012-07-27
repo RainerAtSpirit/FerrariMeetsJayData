@@ -62,7 +62,7 @@ require(['jquery', 'app', 'knockout', 'jaydata', 'prettyDate', 'metrojs' ], func
         $(".live-tile, .flip-list").not(".exclude").liveTile();
 
         // showing UTC date as prettyDate
-        $('span.prettyDate').prettyDate({ isUTC : true });
+        $('.prettyDate').prettyDate({ isUTC : true });
 
     });
 });
