@@ -48,6 +48,10 @@ requirejs.config({
         },
         'postbox' : {
             deps : ['knockout']
+        },
+        'underscore' : {
+            deps : [],
+            exports : "_"
         }
     }
 });

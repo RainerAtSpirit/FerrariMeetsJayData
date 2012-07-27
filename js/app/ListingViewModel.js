@@ -2,79 +2,105 @@ define(['knockout', 'postbox'], function (ko, postbox) {
     "use strict";
 
     return function () {
-        this.selectedList = ko.observable('').syncWith('selectedList');
-        this.allItems = ko.observableArray([]);
+        var selectedList, allItems, take, takeValues, include, orderByDescending, handleAfterRender, showTable, map, mapName, mapURL, mapFallback,
+            chooseMap;
+
+        selectedList = ko.observable('No list selected').syncWith('selectedList');
+        allItems = ko.observableArray([]);
 
         // Setting up defaults for listing requests
-        this.take = 50;
-        this.include = 'CreatedBy';
 
-        this.handleAfterRender = function (elements, data) {
+        take = ko.observable(10);
+        takeValues = ko.observableArray([10, 20, 50]);
+
+        include = 'CreatedBy';
+        orderByDescending = 'Modified';
+
+        handleAfterRender = function (elements, data) {
             $(elements).find('.prettyDate').prettyDate({ isUTC : true });
         };
 
+        showTable = ko.computed(function(){
+            return selectedList() !== 'No list selected';
+        });
+
         // Todo: DRY
-        this.map = function (item) {
+        map = function (item) {
             return {
                 Id : item.Id,
                 Title : item.Title,
+                Modified: item.Modified,
                 Created : item.Created,
                 CreatedBy : item.CreatedBy.Name
             };
         };
 
-        this.mapName = function (item) {
+        mapName = function (item) {
             return {
                 Id : item.Id,
                 Title : item.Name,
+                Modified: item.Modified,
                 Created : item.Created,
                 CreatedBy : item.CreatedBy.Name
             };
         };
 
-        this.mapURL = function (item) {
+        mapURL = function (item) {
             return {
                 Id : item.Id,
                 Title : item.URL,
+                Modified: item.Modified,
                 Created : item.Created,
                 CreatedBy : item.CreatedBy.Name
             };
         };
 
-        this.mapFallback = function (item) {
+        mapFallback = function (item) {
             return {
                 Id : item.Id,
                 Title : item.ContentType,
+                Modified: item.Modified,
                 Created : item.Created,
                 CreatedBy : item.CreatedBy.Name
             };
         };
 
-        this.chooseMap = function (list) {
+        chooseMap = function (list) {
             if (app.context[list].elementType.memberDefinitions.getMember('Title')) {
-                return this.map;
+                return map;
             }
             else if (app.context[list].elementType.memberDefinitions.getMember('Name')) {
-                return this.mapName;
+                return mapName;
             }
             else if (app.context[list].elementType.memberDefinitions.getMember('URL')) {
-                return this.mapURL;
+                return mapURL;
             }
             else {
-                return this.Fallback;
+                return mapFallback;
             }
         };
 
         postbox.subscribe("selectedList", function (newValue) {
             if (newValue !== '') {
                 app.context[newValue]
-                    .include(this.include)
-                    .map(this.chooseMap(newValue))
-                    .take(this.take)
-                    .toArray(this.allItems);
+                    .orderByDescending(function(newValue){ return newValue.Modified; })
+                    //.orderByDescending("'" + newValue + ".Modified'")
+                    .include(include)
+                    .map(chooseMap(newValue))
+                    .take(take())
+                    .toArray(allItems);
             }
-        }, this);
+        });
 
+        // Return public methods
+        return {
+            selectedList : selectedList,
+            take: take,
+            takeValues: takeValues,
+            allItems : allItems,
+            handleAfterRender : handleAfterRender,
+            showTable: showTable
+        }
     };
 
 });

@@ -2,15 +2,31 @@ define(['knockout', 'helper', 'postbox'], function (ko, fn, postbox) {
     "use strict";
 
     return function () {
-        this.TileData = ko.observable();
+        var userId, TileData, goToDetail;
+
+        userId = ko.observable().subscribeTo('userId');
+
+        TileData = ko.observableArray([]);
 
         // Behaviours
-        this.goToDetail = function (tile) {
-            postbox.publish('selectedList', fn.cleanup(tile.title));
+        goToDetail = function (tile) {
+            if ( userId() !== 'anonymous'){
+                postbox.publish('selectedList', fn.cleanup(tile.title));
+            }
+            else {
+                alert(' Make sure to log on.');
+            }
         };
 
         // Bootstrap
-        this.TileData = app.tilesData.tiles.tile;
-        // Client-side routes
+        TileData(app.tilesData.tiles.tile);
+
+
+        // Return public methods
+        return{
+            userId: userId,
+            TileData : TileData,
+            goToDetail : goToDetail
+        };
     };
 });
