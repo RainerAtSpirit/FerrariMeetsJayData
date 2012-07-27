@@ -48,7 +48,7 @@
 
         <p>Live demo for an upcoming blog post at <a href="http://rainerat.spirit.de/">Rainer at Spirit</a></p>
 
-        <div id="loginHelper">
+        <div id="logonVM">
             <div data-bind="visible: userId !== 'anonymous' " style="display: none;">
                 You're logged on as: <span class="success label" data-bind="text: userId"></span>
             </div>
@@ -62,7 +62,7 @@
     </div>
 </div>
 <div class="row">
-    <div id="metroTiles" class="twelve columns tiles" data-bind="foreach: TileData">
+    <div id="tileVM" class="twelve columns tiles" data-bind="foreach: TileData">
         <div class="live-tile" data-stops="100%" data-speed="750" data-delay="-1"
              data-bind="class: color + ' ' + size ,
            attr: {'data-mode': mode ? mode : '', 'data-direction': direction} ,
@@ -81,7 +81,7 @@
     </div>
 </div>
 <!-- Draft version -->
-<div class="row" id="listingView">
+<div class="row" id="listingVM">
     <h3 data-bind="text: $root.selectedList"> No list selected</h3>
     <h3 class="subheader">Debugging info:</h3>
     <div class="debug" data-bind="text: ko.toJSON($root)">

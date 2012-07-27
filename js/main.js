@@ -24,7 +24,10 @@ requirejs.config({
         // app related files are stored separately from libs
         app : '../js/app/app',
         appData : '../js/app/appdata',
-        helper : '../js/app/helper'
+        helper : '../js/app/helper',
+        LogonVM : '../js/app/LogonViewModel',
+        TileVM : '../js/app/TileViewModel',
+        ListingVM : '../js/app/ListingViewModel'
     },
     shim : {
         'prettyDate' : {
