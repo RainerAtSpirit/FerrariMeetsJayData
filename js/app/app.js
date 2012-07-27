@@ -54,6 +54,11 @@ define(['knockout', 'helper', 'postbox', 'underscore', 'jaydata', 'appData', 'jd
         self.take = 50;
         self.include = 'CreatedBy';
 
+        self.handleAfterRender = function(elements, data) {
+          $(elements).find('.prettyDate').prettyDate({ isUTC : true });
+        };
+
+
         // Todo: DRY
         self.map = function (item) {
             return {
