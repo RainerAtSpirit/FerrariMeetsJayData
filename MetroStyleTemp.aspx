@@ -28,7 +28,7 @@
 
     <script src="libs/modernizr.foundation.js"></script>
 
-    <script data-main="js/main" src="libs/require.js"></script>
+    <script data-main="js/maintemp" src="libs/require.js"></script>
     <script type="text/javascript">
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', 'UA-31072569-1']);
