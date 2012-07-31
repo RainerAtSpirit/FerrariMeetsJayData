@@ -1,17 +1,21 @@
-define(['knockout', 'helper', 'postbox'], function (ko, fn, postbox) {
+define(['knockout', 'helper'], function (ko, fn) {
     "use strict";
 
     return function () {
-        var userId, TileData, goToDetail;
+        var userId, selectedList, TileData, goToDetail;
 
         userId = ko.observable().subscribeTo('userId');
+        selectedList = ko.observable().subscribeTo('selectedList');
 
         TileData = ko.observableArray([]);
 
         // Behaviours
-        goToDetail = function (tile) {
-            if ( userId() !== 'anonymous'){
-                postbox.publish('selectedList', fn.cleanup(tile.title));
+        goToDetail = function (tile, event) {
+            if (userId() !== 'anonymous') {
+
+                selectedList(fn.cleanup(tile.title));
+                location.hash = '/view/' + selectedList();
+                //$(event.currentTarget).parent('div').slideUp('fast');
             }
             else {
                 alert(' Make sure to log on.');
@@ -24,7 +28,7 @@ define(['knockout', 'helper', 'postbox'], function (ko, fn, postbox) {
 
         // Return public methods
         return{
-            userId: userId,
+            userId : userId,
             TileData : TileData,
             goToDetail : goToDetail
         };

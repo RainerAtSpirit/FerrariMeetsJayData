@@ -2,112 +2,75 @@ define(['knockout', 'postbox', 'underscore'], function (ko, postbox) {
     "use strict";
 
     return function () {
-        var selectedList, allItems, take, takeValues, include, includeArray, orderBy, orderAsc, handleAfterRender, showTable,
-            map, mapName, mapURL, mapFallback, chooseMap;
+        var selectedList, allItems, userId, take, takeValues, includeArray, itemTitle, orderBy, orderAsc, handleAfterRender, showTable,
+            chooseMap;
 
-        selectedList = ko.observable('No list selected').syncWith('selectedList');
+        selectedList = ko.observable('').syncWith('selectedList');
         allItems = ko.observableArray([]);
-        // Setting up defaults for listing requests
+        userId = ko.observable().subscribeTo('userId');
+        // defaults for OData requests
 
         take = ko.observable(10);
         takeValues = ko.observableArray([10, 20, 50]);
-        orderBy = ko.observable('Title');
-        orderAsc = ko.observable(true);
-
-        include = ko.observable('CreatedBy');
+        orderBy = ko.observable('Modified');
+        orderAsc = ko.observable(false);
         includeArray = ko.observableArray(['CreatedBy', 'ModifiedBy']);
-
+        itemTitle = ko.observable('Title');
 
         handleAfterRender = function (elements, data) {
             $(elements).find('.prettyDate').prettyDate({ isUTC : true });
         };
 
         showTable = ko.computed(function () {
-            return selectedList() !== 'No list selected';
+            return selectedList() !== '';
         });
 
 
-        // Todo: DRY
-
-
-        map = function (item) {
-            return {
-                Id : item.Id,
-                Title : item.Title,
-                Modified : item.Modified,
-                Created : item.Created,
-                CreatedBy : item.CreatedBy.Name
-            };
-        };
-
-        mapName = function (item) {
-            return {
-                Id : item.Id,
-                Title : item.Name,
-                Modified : item.Modified,
-                Created : item.Created,
-                CreatedBy : item.CreatedBy.Name
-            };
-        };
-
-        mapURL = function (item) {
-            return {
-                Id : item.Id,
-                Title : item.URL,
-                Modified : item.Modified,
-                Created : item.Created,
-                CreatedBy : item.CreatedBy.Name
-            };
-        };
-
-        mapFallback = function (item) {
-            return {
-                Id : item.Id,
-                Title : item.ContentType,
-                Modified : item.Modified,
-                Created : item.Created,
-                CreatedBy : item.CreatedBy.Name
-            };
-        };
 
         chooseMap = function (list) {
+
             if (app.context[list].elementType.memberDefinitions.getMember('Title')) {
-                return map;
+                itemTitle('Title');
+
+                return "{ Id: it.Id, Title: it." + itemTitle() + ", Modified: it.Modified, Created: it.Created, CreatedBy : it.CreatedBy.Name }";
             }
             else if (app.context[list].elementType.memberDefinitions.getMember('Name')) {
-                return mapName;
+                itemTitle('Name');
+
+                return "{ Id: it.Id, Title: it." + itemTitle() + ", Modified: it.Modified, Created: it.Created, CreatedBy : it.CreatedBy.Name }";
             }
             else if (app.context[list].elementType.memberDefinitions.getMember('URL')) {
-                return mapURL;
+                itemTitle('URL');
+                return "{ Id: it.Id, Title: it." + itemTitle() + ", Modified: it.Modified, Created: it.Created, CreatedBy : it.CreatedBy.Name }";
             }
             else {
-                return mapFallback;
+                itemTitle('ContentType');
+                return "{ Id: it.Id, Title: it." + itemTitle() + ", Modified: it.Modified, Created: it.Created, CreatedBy : it.CreatedBy.Name }";
             }
         };
 
         postbox.subscribe("selectedList", function (newValue) {
+            if (app.configMap.userId === 'anonymous'){
+                return alert ('Make sure to log on.');
+            }
             if (newValue !== '') {
-                var x = orderBy(),
-                    base = app.context[newValue],
+                var base = app.context[newValue],
                     myBase = _.extend({}, base),
-                   // sortExp = function(it){ return it.Modified };
                     sortExp = 'it.' + orderBy();
 
                 if (orderAsc()) {
-                    _.extend(myBase, myBase.orderBy( sortExp ));
+                    _.extend(myBase, myBase.orderBy(sortExp));
                 }
                 else {
-                    _.extend(myBase, myBase.orderByDescending( sortExp ));
+                    _.extend(myBase, myBase.orderByDescending(sortExp));
                 }
-                _.each(includeArray(), function(inc){
+                _.each(includeArray(), function (inc) {
                     _.extend(myBase, myBase.include(inc));
                 });
-                //_.extend(myBase, myBase.include(include()));
                 _.extend(myBase, myBase.map(chooseMap(newValue)));
                 _.extend(myBase, myBase.take(take()));
 
             }
-
 
             myBase.toArray(allItems);
         });

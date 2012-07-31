@@ -713,7 +713,6 @@ var $data = window.$data;
               , params: [{ listTitle: 'Edm.String' }], method: 'GET'})
           });
 
-
           })(window, $data);
       
 });
