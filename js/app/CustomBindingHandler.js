@@ -14,7 +14,7 @@ define(['knockout'], function (ko) {
         }
     };
     // See http://stackoverflow.com/questions/10231347/knockout-afterrender-but-just-once
-    ko.bindingHandlers.updateDetailTileOnce = {
+    ko.bindingHandlers.updateTilesOnce = {
         init : {
         },
         update : function (element, valueAccessor, allBindingsAccessor, viewModel) {

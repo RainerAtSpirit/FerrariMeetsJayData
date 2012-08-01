@@ -102,7 +102,7 @@
                 <h3 data-bind="text: $root.selectedList"></h3>
             </div>
         </div>
-        <div class="twelve columns" data-bind="foreach: allItems, updateDetailTileOnce: true" >
+        <div class="twelve columns" data-bind="foreach: allItems, updateTilesOnce: true" >
                 <div class="live-tile blue" data-bind="click: $root.showDetails" data-mode="flip">
                    <div>
                        <h3 data-bind="text: Title"></h3>

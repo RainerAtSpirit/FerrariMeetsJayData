@@ -3,7 +3,7 @@
  * Date: 25.07.12
  * Time: 15:54
  */
-define(['jaydata', 'JayData1.1.1/jaydataproviders/oDataProvider'], function () {
+define(['jaydata', 'JayData1.1.1/jaydataproviders/oDataProvider.min'], function () {
 
 var app = window.app || {};
 var $data = window.$data;

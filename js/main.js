@@ -8,24 +8,31 @@ requirejs.config({
     //By default load any module IDs from js/lib
     baseUrl : 'libs',
     paths : {
-        /*
+       // Try loading from CDN first
        jquery : [
             '//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min',
             'jquery.min'],
         knockout : [
             '//ajax.aspnetcdn.com/ajax/knockout/knockout-2.1.0',
             'knockout-2.1.0'],
+        underscore : [
+            '//cdnjs.cloudflare.com/ajax/libs/underscore.js/1.3.3/underscore-min',
+            'underscore-min'
+        ],
+        /*
+            jquery: 'jquery.min',
+            knockout: 'knockout-2.1.0',
+            underscore: 'underscore-min',
         */
-        underscore : 'underscore-min',
-        jquery: 'jquery.min',
-        knockout: 'knockout-2.1.0',
         kocBH : '../js/app/CustomBindingHandler',
         prettyDate : 'jquery.prettyDate',
         metrojs : 'MetroJs',
-        jaydata : 'JayData1.1.1/jaydata',
+        jaydata : 'JayData1.1.1/jaydata.min',
         jd2ko : 'JayData1.1.1/JayDataModules/knockout',
         postbox : 'knockout-postbox.min',
+
         // app related files are stored separately from libs
+
         app : '../js/app/app',
         appData : '../js/app/appdata',
         helper : '../js/app/helper',
@@ -42,7 +49,7 @@ requirejs.config({
             deps : ['jquery'],
             exports : 'jQuery.fn.metrojs'
         },
-        'JayData1.1.1/jaydataproviders/oDataProvider' : {
+        'JayData1.1.1/jaydataproviders/oDataProvider.min' : {
             deps : ['jaydata']
         },
         'jd2ko' : {
@@ -60,14 +67,11 @@ require(['jquery', 'app', 'prettyDate', 'metrojs'], function ($, app) {
 
     //Things that happen on dom ready
     $(function () {
-        //var doBind = (typeof (window.bindAppBarKeyboard) == "undefined" || window.bindAppBarKeyboard);
 
         // apply regular slide universally unless .exclude class is applied
-        // NOTE: The default options for each liveTile are being pulled from the 'data-' attributes
         $(".live-tile, .flip-list").not(".exclude").liveTile();
 
         // showing UTC date as prettyDate
         $('.prettyDate').prettyDate({ isUTC : true });
-
     });
 });

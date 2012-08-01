@@ -1,5 +1,5 @@
 define(['knockout', 'postbox', 'underscore', 'jaydata',
-    'JayData1.1.1/jaydataproviders/oDataProvider', 'jd2ko'], function (ko, postbox) {
+    'JayData1.1.1/jaydataproviders/oDataProvider.min', 'jd2ko'], function (ko, postbox) {
     "use strict";
 
     return function () {
