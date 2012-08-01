@@ -28,7 +28,6 @@
 
     <script src="libs/modernizr.foundation.js"></script>
 
-    <script data-main="js/main" src="libs/require.js"></script>
     <script type="text/javascript">
         var _gaq = _gaq || [];
         _gaq.push(['_setAccount', 'UA-31072569-1']);
@@ -38,15 +37,18 @@
     <!--[if lt IE 9]>
     <script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
-
+    <script data-main="js/main" src="libs/require.js"></script>
 </head>
 <body>
 
 <div class="row">
     <div class="twelve columns">
         <h1>The Ferrari meets JayData</h1>
-
-        <p>Live demo for an upcoming blog post at <a href="http://rainerat.spirit.de/">Rainer at Spirit</a></p>
+        <h2 class="subheader">Running on premise on SP2010 foundation</h2>
+        <p>Live demo for an upcoming blog post at <a href="http://rainerat.spirit.de/">Rainer at Spirit</a>.  See
+            this demo running hosted on <a
+                        href="https://spirit2013preview-public.sharepoint.com/zurbv3/MetroStyle.aspx">SP2013
+                    Preview</a></p>
 
         <div id="logonVM">
             <div data-bind="visible: userId() !== 'anonymous' " style="display: none;">
@@ -87,49 +89,43 @@
     </div>
 </div>
 
-<div class="row">
-    <div class="eight columns" id="listingVM" style="display:none"
+<div class="row" id="listingVM">
+
+    <div class="nine columns" style="display:none"
          data-bind="if: showTable(),
          style: { display: showTable() ? 'block' : 'none' }">
-        <h3 data-bind="text: $root.selectedList"></h3>
-        <h3 class="subheader">Using table during development</h3>
-        <!--<h3 class="subheader">Debugging info:</h3>
-                <div class="debug" data-bind="text: ko.toJSON($root)"></div>-->
-        <table width="100%">
-            <thead>
-            <tr>
-                <th width="10%">Id</th>
-                <th width="35%">Title</th>
-                <th with="15%">Modified</th>
-                <th with="15%">Created</th>
-                <th with="15%">CreatedBy</th>
-            </tr>
-            </thead>
-            <tbody data-bind="foreach: { data: allItems, afterRender: handleAfterRender }">
-            <tr>
-                <td><a href="#" data-bind="text: Id"></a></td>
-                <td data-bind="text: Title"></td>
-                <td class="prettyDate"
-                    data-bind="text: Created, attr: {title: new Date(Modified).toISOString().substring(0,19) + 'Z'}"></td>
-                <td class="prettyDate"
-                                data-bind="text: Created, attr: {title: new Date(Created).toISOString().substring(0,19) + 'Z'}"></td>
-                <td data-bind="text: CreatedBy"></td>
-            </tr>
-            </tbody>
-            <tfoot>
-            <tr>
-                <td colspan="4"></td>
-                <td><select data-bind="options: takeValues, value: take"></select></td>
-            </tr>
-            </tfoot>
-        </table>
+        <div class="twelve columns">
+            <div class="two columns">
+                <a href="#" title="Go back"><img src="images/48/arrow_left.png"  style="border: none"/></a>
+            </div>
+            <div class="ten columns">
+                <h3 data-bind="text: $root.selectedList"></h3>
+            </div>
+        </div>
+        <div class="twelve columns" data-bind="foreach: allItems, updateDetailTileOnce: true" >
+                <div class="live-tile blue" data-bind="click: $root.showDetails" data-mode="flip">
+                   <div>
+                       <h3 data-bind="text: Title"></h3>
+                       <span class="tile-title prettyDate"
+                           data-bind="text: Modified, attr: {title: new Date(Modified).toISOString().substring(0,19) + 'Z'}"></span>
+                       <span class="badge" data-bind="text: Id"></span>
+                   </div>
+                   <div>
+                       <p>Here would be room for more information, but for this demo we simply show all infos on the
+                           right.</p>
+                   </div>
+                </div>
+        </div>
     </div>
-    <div class="four columns">
-        <h3>Todo list</h3>
-        <ul>
-            <li><b>$inlinecount</b> not supported by JayData at the moment -> no paging</li>
-            <li>create better looking listing view, tables are so boring</li>
-        </ul>
+    <div class="three columns" style="display:none"  data-bind="if: itemDetail().length > 0,
+             style: { display: showTable() ? 'block' : 'none' }">
+        <h3>Detail info</h3>
+            <ul class="disc" data-bind="foreach: { data: itemDetail}">
+                <li>
+                    <span data-bind="text: key"></span>
+                    <span class="secondary label" data-bind="text: val"></span>
+                </li>
+            </ul>
     </div>
 </div>
 
@@ -162,7 +158,7 @@ Using <XSL> instead </XslLink>-->
                      xmlns:ddwrt2="urn:frontpage:internal"
                      xmlns:ddwrt="http://schemas.microsoft.com/WebParts/v2/DataView/runtime"
                      xmlns:msxsl="urn:schemas-microsoft-com:xslt">
-         <xsl:import href="XSLT/xml2json.xslt"/>
+         <!--<xsl:import href="XSLT/xml2json.xslt"/>-->
          <xsl:output method="html" version="1.0" encoding="UTF-8" indent="no"/>
          <xsl:param name="UserID"></xsl:param>
          <xsl:variable name="Rows"
@@ -258,6 +254,252 @@ Using <XSL> instead </XslLink>-->
                  <xsl:copy-of select="$btConfigNS/item[@btId =  $currItem/@__spBaseTemplate]/@*"/>
              </metaData>
          </xsl:template>
+
+         <!--
+           Copyright (c) 2006, Doeke Zanstra
+           All rights reserved.
+
+           Redistribution and use in source and binary forms, with or without modification,
+           are permitted provided that the following conditions are met:
+
+           Redistributions of source code must retain the above copyright notice, this
+           list of conditions and the following disclaimer. Redistributions in binary
+           form must reproduce the above copyright notice, this list of conditions and the
+           following disclaimer in the documentation and/or other materials provided with
+           the distribution.
+
+           Neither the name of the dzLib nor the names of its contributors may be used to
+           endorse or promote products derived from this software without specific prior
+           written permission.
+
+           THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND
+           ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+           WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED.
+           IN NO EVENT SHALL THE COPYRIGHT OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT,
+           INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING,
+           BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+           DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF
+           LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR
+           OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF
+           THE POSSIBILITY OF SUCH DAMAGE.
+         -->
+
+                <!-- Improvements 2009 01 22: Martynas Jusevičius http://www.xml.lt -->
+           <!-- XML2JSON conversion -->
+
+             <!-- used to identify unique children in Muenchian groupin -->
+             <xsl:key name="elements-by-name" match="@* | *" use="concat(generate-id(..), '@', name(.))"/>
+
+             <!-- XML2JSON conversion -->
+             <xsl:variable name="smallcase" select="'abcdefghijklmnopqrstuvwxyz'"/>
+             <xsl:variable name="uppercase" select="'ABCDEFGHIJKLMNOPQRSTUVWXYZ'"/>
+
+             <!-- include attributes in result? -->
+             <xsl:param name="include-attrs" select="true()"/>
+
+             <!--constant-->
+             <xsl:variable name="d">0123456789</xsl:variable>
+
+
+
+
+             <!-- ignore document text -->
+             <xsl:template match="text()[preceding-sibling::node() or following-sibling::node()]"/>
+
+             <!-- string -->
+             <xsl:template match="text()">
+                 <!-- RainetAtSpirit: Adding support for correct handling of elements with attributes.
+               e.g. <Value Type="Counter">%ListItemID%</Value>
+               -->
+                 <xsl:if test="../@* and ../text()">"text":</xsl:if>
+                 <xsl:call-template name="process-values">
+                     <xsl:with-param name="s" select="."/>
+                 </xsl:call-template>
+                 <xsl:if test="../@* and ../text()">}</xsl:if>
+             </xsl:template>
+
+             <!-- text values (from text nodes and attributes) -->
+             <xsl:template name="process-values">
+                 <xsl:param name="s"/>
+                 <xsl:choose>
+                     <!-- number -->
+                     <xsl:when test="not(string(number($s))='NaN')">
+                         <xsl:value-of select="$s"/>
+                     </xsl:when>
+                     <!-- boolean -->
+                     <xsl:when test="translate($s,'TRUE','true')='true'">true</xsl:when>
+                     <xsl:when test="translate($s,'FALSE','false')='false'">false</xsl:when>
+                     <!-- string -->
+                     <xsl:otherwise>
+                         <xsl:call-template name="escape-string">
+                             <xsl:with-param name="s" select="$s"/>
+                         </xsl:call-template>
+                     </xsl:otherwise>
+                 </xsl:choose>
+             </xsl:template>
+
+             <!-- Main template for escaping strings; used by above template and for object-properties
+              Responsibilities: placed quotes around string, and chain up to next filter, escape-bs-string -->
+             <xsl:template name="escape-string">
+                 <xsl:param name="s"/>
+                 <xsl:text>"</xsl:text>
+                 <xsl:call-template name="escape-bs-string">
+                     <xsl:with-param name="s" select="$s"/>
+                 </xsl:call-template>
+                 <xsl:text>"</xsl:text>
+             </xsl:template>
+
+             <!-- Escape the backslash (\) before everything else. -->
+             <xsl:template name="escape-bs-string">
+                 <xsl:param name="s"/>
+                 <xsl:choose>
+                     <xsl:when test="contains($s,'\')">
+                         <xsl:call-template name="escape-quot-string">
+                             <xsl:with-param name="s" select="concat(substring-before($s,'\'),'\\')"/>
+                         </xsl:call-template>
+                         <xsl:call-template name="escape-bs-string">
+                             <xsl:with-param name="s" select="substring-after($s,'\')"/>
+                         </xsl:call-template>
+                     </xsl:when>
+                     <xsl:otherwise>
+                         <xsl:call-template name="escape-quot-string">
+                             <xsl:with-param name="s" select="$s"/>
+                         </xsl:call-template>
+                     </xsl:otherwise>
+                 </xsl:choose>
+             </xsl:template>
+
+             <!-- Escape the double quote ("). -->
+             <xsl:template name="escape-quot-string">
+                 <xsl:param name="s"/>
+                 <xsl:choose>
+                     <xsl:when test="contains($s,'&quot;')">
+                         <xsl:call-template name="encode-string">
+                             <xsl:with-param name="s" select="concat(substring-before($s,'&quot;'),'\&quot;')"/>
+                         </xsl:call-template>
+                         <xsl:call-template name="escape-quot-string">
+                             <xsl:with-param name="s" select="substring-after($s,'&quot;')"/>
+                         </xsl:call-template>
+                     </xsl:when>
+                     <xsl:otherwise>
+                         <xsl:call-template name="encode-string">
+                             <xsl:with-param name="s" select="$s"/>
+                         </xsl:call-template>
+                     </xsl:otherwise>
+                 </xsl:choose>
+             </xsl:template>
+
+             <!-- Replace tab, line feed and/or carriage return by its matching escape code. Can't escape backslash
+              or double quote here, because they don't replace characters (&#x0; becomes \t), but they prefix
+              characters (\ becomes \\). Besides, backslash should be seperate anyway, because it should be
+              processed first. This function can't do that. -->
+             <xsl:template name="encode-string">
+                 <xsl:param name="s"/>
+                 <xsl:choose>
+                     <!-- tab -->
+                     <xsl:when test="contains($s,'&#x9;')">
+                         <xsl:call-template name="encode-string">
+                             <xsl:with-param name="s"
+                                             select="concat(substring-before($s,'&#x9;'),'\t',substring-after($s,'&#x9;'))"/>
+                         </xsl:call-template>
+                     </xsl:when>
+                     <!-- line feed -->
+                     <xsl:when test="contains($s,'&#xA;')">
+                         <xsl:call-template name="encode-string">
+                             <xsl:with-param name="s"
+                                             select="concat(substring-before($s,'&#xA;'),'\n',substring-after($s,'&#xA;'))"/>
+                         </xsl:call-template>
+                     </xsl:when>
+                     <!-- carriage return -->
+                     <xsl:when test="contains($s,'&#xD;')">
+                         <xsl:call-template name="encode-string">
+                             <xsl:with-param name="s"
+                                             select="concat(substring-before($s,'&#xD;'),'\r',substring-after($s,'&#xD;'))"/>
+                         </xsl:call-template>
+                     </xsl:when>
+                     <xsl:otherwise>
+                         <xsl:value-of select="$s"/>
+                     </xsl:otherwise>
+                 </xsl:choose>
+             </xsl:template>
+
+             <!-- object -->
+             <xsl:template match="*">
+                 <!-- checks if this node should be in array (ie there are more siblings with the same name) -->
+                 <xsl:variable name="in-array"
+                               select="count(key('elements-by-name', concat(generate-id(..), '@', name(.)))) &gt; 1"/>
+                 <xsl:if test="position() = 1">{
+                 </xsl:if>
+                 <xsl:call-template name="escape-string">
+                     <xsl:with-param name="s" select="name()"/>
+                 </xsl:call-template>
+                 <xsl:text>:</xsl:text>
+                 <!-- if not in array, apply templates on unique children (which may represent a group of more than one, that becomes an array) -->
+                 <xsl:if test="not($in-array)">
+                     <xsl:choose>
+                         <xsl:when test="@* | child::node()">
+                             <xsl:if test="$include-attrs">
+                                 <xsl:apply-templates
+                                         select="@* | *[generate-id(.) = generate-id(key('elements-by-name', concat(generate-id(..), '@', name(.)))[1])] | text()"/>
+                             </xsl:if>
+                             <xsl:if test="not($include-attrs)">
+                                 <xsl:apply-templates
+                                         select="*[generate-id(.) = generate-id(key('elements-by-name', concat(generate-id(..), '@', name(.)))[1])] | text()"/>
+                             </xsl:if>
+                         </xsl:when>
+                         <xsl:otherwise>null</xsl:otherwise>
+                     </xsl:choose>
+                 </xsl:if>
+                 <!-- if in array, apply templates on a group of equally-named sibling nodes -->
+                 <xsl:if test="$in-array">
+                     <xsl:apply-templates select="key('elements-by-name', concat(generate-id(..), '@', name(.)))" mode="array"/>
+                 </xsl:if>
+                 <xsl:if test="position() != last()">,
+                 </xsl:if>
+                 <xsl:if test="position() = last()">}
+                 </xsl:if>
+             </xsl:template>
+
+             <!-- array -->
+             <xsl:template match="*" mode="array">
+                 <xsl:if test="position() = 1">[
+                 </xsl:if>
+                 <xsl:choose>
+                     <xsl:when test="@* | child::node()">
+                         <xsl:if test="$include-attrs">
+                             <xsl:apply-templates
+                                     select="@* | *[generate-id(.) = generate-id(key('elements-by-name', concat(generate-id(..), '@', name(.)))[1])] | text()"/>
+                         </xsl:if>
+                         <xsl:if test="not($include-attrs)">
+                             <xsl:apply-templates
+                                     select="*[generate-id(.) = generate-id(key('elements-by-name', concat(generate-id(..), '@', name(.)))[1])] | text()"/>
+                         </xsl:if>
+                     </xsl:when>
+                     <xsl:otherwise>null</xsl:otherwise>
+                 </xsl:choose>
+                 <xsl:if test="position() != last()">,
+                 </xsl:if>
+                 <xsl:if test="position() = last()">]
+                 </xsl:if>
+             </xsl:template>
+
+             <!-- attributes -->
+             <xsl:template match="@*">
+                 <xsl:if test="position() = 1">{
+                 </xsl:if>
+                 <xsl:call-template name="escape-string">
+                     <xsl:with-param name="s" select="name()"/>
+                 </xsl:call-template>
+                 <xsl:text>:</xsl:text>
+                 <xsl:call-template name="process-values">
+                     <xsl:with-param name="s" select="."/>
+                 </xsl:call-template>
+                 <xsl:if test="position() != last()">,
+                 </xsl:if>
+                 <xsl:if test="position() = last()">}
+                 </xsl:if>
+             </xsl:template>
+
      </xsl:stylesheet>
      </Xsl>
      <DataSources>

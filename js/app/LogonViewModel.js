@@ -9,7 +9,7 @@ define(['knockout'], function (ko) {
         // Behaviours
 
         loginURL = ko.computed(function () {
-            return '../_layouts/Authenticate.aspx?Source=' + encodeURIComponent(location.pathname)
+            return '../_layouts/Authenticate.aspx?Source=' + encodeURIComponent(location.pathname) + location.hash;
         });
 
 

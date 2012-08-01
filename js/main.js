@@ -8,16 +8,18 @@ requirejs.config({
     //By default load any module IDs from js/lib
     baseUrl : 'libs',
     paths : {
-        underscore : 'underscore-min',
-        jquery : [
+        /*
+       jquery : [
             '//ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min',
             'jquery.min'],
         knockout : [
             '//ajax.aspnetcdn.com/ajax/knockout/knockout-2.1.0',
             'knockout-2.1.0'],
+        */
+        underscore : 'underscore-min',
+        jquery: 'jquery.min',
+        knockout: 'knockout-2.1.0',
         kocBH : '../js/app/CustomBindingHandler',
-        sammy : 'sammy-0.7.1.min',
-        path : 'path-0.8.4',
         prettyDate : 'jquery.prettyDate',
         metrojs : 'MetroJs',
         jaydata : 'JayData1.1.1/jaydata',
@@ -36,45 +38,30 @@ requirejs.config({
             deps : ['jquery'],
             exports : 'jQuery.fn.prettyDate'
         },
-        'sammy' : {
-            deps : ['jquery'],
-            exports : 'jQuery.sammmy'
-        },
         'metrojs' : {
             deps : ['jquery'],
             exports : 'jQuery.fn.metrojs'
         },
-        'jd2ko' : {
-            deps : ['jaydata']
-        },
         'JayData1.1.1/jaydataproviders/oDataProvider' : {
             deps : ['jaydata']
         },
+        'jd2ko' : {
+            deps : ['jaydata', 'knockout']
+        },
         'postbox' : {
             deps : ['knockout']
-        },
-        'path' : {
-            deps : [],
-            exports : "Path_"
-        },
-        'underscore' : {
-            deps : [],
-            exports : "_"
         }
     }
 });
 
-require(['jquery', 'app', 'knockout', 'prettyDate', 'metrojs'], function ($, app, ko) {
-
-    window.ko = ko;
-
+require(['jquery', 'app', 'prettyDate', 'metrojs'], function ($, app) {
+    // we can safely kick of the app even before document.ready
+    app.init();
 
     //Things that happen on dom ready
     $(function () {
-        // we can safely kick of the app even before document.ready
-        app.init();
-
         //var doBind = (typeof (window.bindAppBarKeyboard) == "undefined" || window.bindAppBarKeyboard);
+
         // apply regular slide universally unless .exclude class is applied
         // NOTE: The default options for each liveTile are being pulled from the 'data-' attributes
         $(".live-tile, .flip-list").not(".exclude").liveTile();

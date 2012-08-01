@@ -13,4 +13,24 @@ define(['knockout'], function (ko) {
             element['__ko__previousClassValue__'] = value;
         }
     };
+    // See http://stackoverflow.com/questions/10231347/knockout-afterrender-but-just-once
+    ko.bindingHandlers.updateDetailTileOnce = {
+        init : {
+        },
+        update : function (element, valueAccessor, allBindingsAccessor, viewModel) {
+            // This will be called once when the binding is first applied to an element,
+            // and again whenever the associated observable changes value.
+            // Update the DOM element based on the supplied values here.
+
+            if ($(element).find('.live-tile').length > 0) {
+                $(element).find('.live-tile')
+                    .liveTile({ repeatCount : 0, delay : 0 })
+                    .click(function () {
+                        $(this).liveTile('play');
+                    })
+                    .find('.prettyDate').prettyDate({ isUTC : true });
+            }
+
+        }
+    };
 });

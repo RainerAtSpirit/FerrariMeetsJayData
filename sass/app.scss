@@ -47,6 +47,13 @@ $SegoeUILight: "Segoe UI Light", "Open Sans Condensed", Helvetica, sans-serif;
   font-weight: normal;
 }
 
+table tbody tr td {
+   text-overflow: ellipsis;
+   -o-text-overflow: ellipsis;
+   -webkit-text-overflow: ellipsis;
+   white-space: nowrap;
+   overflow: hidden;
+}
 
 /* http://msdn.microsoft.com/en-us/library/windows/apps/hh700394.aspx */
 

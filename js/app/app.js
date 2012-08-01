@@ -3,13 +3,15 @@
  * Date: 24.07.12
  * Time: 15:35
  */
-define(['jquery', 'knockout', 'LogonVM', 'TileVM', 'ListingVM', 'postbox', 'path', 'appData', 'jaydata',
-    'JayData1.1.1/jaydataproviders/oDataProvider', 'jd2ko', 'kocBH' ],
+define(['jquery', 'knockout', 'LogonVM', 'TileVM', 'ListingVM', 'postbox', 'path', 'jaydata',
+    'JayData1.1.1/jaydataproviders/oDataProvider', 'appData', 'kocBH' ],
     function ($, ko, LogonVM, TileVM, ListingVM, postbox) {
         "use strict";
-        var $tileContainer = $('#tileVM');
-
-        var init = function () {
+        var $tileContainer = $('#tileVM'),
+            init;
+        // Exposing ko as global
+        window.ko = window.ko || ko;
+        init = function () {
 
             // Configuring JayData to use current site Odata service
             app.context = new app.MetroStyleDataContext({ name : 'oData', oDataServiceHost : '../_vti_bin/listdata.svc' });
@@ -29,7 +31,7 @@ define(['jquery', 'knockout', 'LogonVM', 'TileVM', 'ListingVM', 'postbox', 'path
                 postbox.publish('selectedList', this.params.list);
             }).enter(toggleTiles);
 
-            Path.map("").to(function(){
+            Path.map("(#)").to(function(){
                 postbox.publish('selectedList', '');
             }).enter(toggleTiles);
 
