@@ -22,9 +22,11 @@ define(['knockout'], function (ko) {
             // and again whenever the associated observable changes value.
             // Update the DOM element based on the supplied values here.
 
+            var tileOptions = valueAccessor().liveTile || {};
+
             if ($(element).find('.live-tile').length > 0) {
                 $(element).find('.live-tile')
-                    .liveTile({ repeatCount : 0, delay : 0 })
+                    .liveTile(tileOptions)
                     .click(function () {
                         $(this).liveTile('play');
                     })

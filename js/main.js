@@ -62,16 +62,8 @@ requirejs.config({
 });
 
 require(['jquery', 'app', 'prettyDate', 'metrojs'], function ($, app) {
+
     // we can safely kick of the app even before document.ready
     app.init();
 
-    //Things that happen on dom ready
-    $(function () {
-
-        // apply regular slide universally unless .exclude class is applied
-        $(".live-tile, .flip-list").not(".exclude").liveTile();
-
-        // showing UTC date as prettyDate
-        $('.prettyDate').prettyDate({ isUTC : true });
-    });
 });
