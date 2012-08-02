@@ -1,29 +1,29 @@
-define(['knockout', 'helper'], function (ko, fn) {
+define (['knockout', 'helper'], function ( ko, fn ) {
     "use strict";
 
     return function () {
-        var userId, selectedList, TileData, goToDetail;
+        // ko observables
+        var userId = ko.observable ().subscribeTo ('userId'),
+            selectedList = ko.observable ().subscribeTo ('selectedList'),
+            TileData = ko.observableArray ([]),
+        // functions
+            goToDetail;
 
-        userId = ko.observable().subscribeTo('userId');
-        selectedList = ko.observable().subscribeTo('selectedList');
+        // end of var declaration
 
-        TileData = ko.observableArray([]);
+        goToDetail = function ( tile, event ) {
+            if ( userId () !== 'anonymous' ) {
 
-        // Behaviours
-        goToDetail = function (tile, event) {
-            if (userId() !== 'anonymous') {
-
-                selectedList(fn.cleanup(tile.title));
-                location.hash = '/view/' + selectedList();
-                //$(event.currentTarget).parent('div').slideUp('fast');
+                selectedList (fn.cleanup (tile.title));
+                location.hash = '/view/' + selectedList ();
             }
             else {
-                alert(' Make sure to log on.');
+                alert (' Make sure to log on.');
             }
         };
 
         // Bootstrap
-        TileData(app.tilesData.tiles.tile);
+        TileData (app.tilesData.tiles.tile);
 
 
         // Return public methods

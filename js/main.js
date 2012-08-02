@@ -61,9 +61,7 @@ requirejs.config({
     }
 });
 
-require(['jquery', 'app', 'prettyDate', 'metrojs'], function ($, app) {
-
+require(['app'], function (app) {
     // we can safely kick of the app even before document.ready
     app.init();
-
 });

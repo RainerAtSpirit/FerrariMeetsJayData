@@ -40,6 +40,12 @@
     <script data-main="js/main" src="libs/require.js"></script>
 </head>
 <body>
+<!--[if lt IE 9]>
+<div class="alert-box [success alert secondary]">
+Sorry to say, but you're browser is outdated and can't cope with a modern HTML5 application. Please update and
+    come back.
+</div>
+<![endif]-->
 
 <div class="row">
     <div class="twelve columns">
@@ -71,9 +77,9 @@
     <div class="twelve columns tiles"
          data-bind="foreach: TileData, updateTilesOnce: true">
         <div class="live-tile" data-stops="100%" data-speed="750" data-delay="-1"
-             data-bind="class: color + ' ' + size ,
-           attr: {'data-mode': mode ? mode : '', 'data-direction': direction} ,
-           click: $root.goToDetail">
+             data-bind="class: color + ' ' + size,
+                        attr: {'data-mode': mode ? mode : '', 'data-direction': direction} ,
+                        click: $root.goToDetail">
             <span class="tile-title" data-bind="text: title"></span>
             <span class="badge" data-bind="text: count"></span>
 
@@ -91,8 +97,7 @@
 <div class="row" id="listingVM">
 
     <div class="nine columns" style="display:none"
-         data-bind="if: showTable(),
-         style: { display: showTable() ? 'block' : 'none' }">
+         data-bind="visible: showTable()">
         <div class="twelve columns">
             <div class="two columns">
                 <a href="#" title="Go back"><img src="images/48/arrow_left.png"  style="border: none"/></a>
@@ -102,23 +107,25 @@
             </div>
         </div>
         <div class="twelve columns"
-             data-bind="foreach: allItems, updateTilesOnce: {liveTile: { repeatCount : 0, delay : 0 }}" >
-                <div class="live-tile blue" data-bind="click: $root.showDetails" data-mode="flip">
+             data-bind="foreach: allItems,
+                        updateTilesOnce: {liveTile: { repeatCount : 0, delay : 0 }}" >
+                <div class="live-tile blue" data-bind="click: $root.getDetails" data-mode="flip">
                    <div>
                        <h3 data-bind="text: Title"></h3>
                        <span class="tile-title prettyDate"
-                           data-bind="text: Modified, attr: {title: new Date(Modified).toISOString().substring(0,19) + 'Z'}"></span>
+                           data-bind="  text: Modified,
+                                        attr: {title: new Date(Modified).toISOString().substring(0,19) + 'Z'}"></span>
                        <span class="badge" data-bind="text: Id"></span>
                    </div>
                    <div>
-                       <p>Here would be room for more information, but for this demo we simply show all infos on the
+                       <p>Here would be room for more information, but for this demo we simply show the infos on the
                            right.</p>
                    </div>
                 </div>
         </div>
     </div>
-    <div class="three columns" style="display:none"  data-bind="if: itemDetail().length > 0,
-             style: { display: showTable() ? 'block' : 'none' }">
+    <div class="three columns" style="display:none"
+         data-bind="visible: showDetails">
         <h3>Detail info</h3>
             <ul class="disc" data-bind="foreach: { data: itemDetail}">
                 <li>

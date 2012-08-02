@@ -1,17 +1,13 @@
-define(['knockout'], function (ko) {
+define (['knockout'], function ( ko ) {
     "use strict";
 
     return function () {
-        var userId, loginURL;
+        var userId = ko.observable (app.configMap.userId).publishOn ('userId'),
+            loginURL;
 
-        userId = ko.observable(app.configMap.userId).publishOn('userId');
-
-        // Behaviours
-
-        loginURL = ko.computed(function () {
-            return '../_layouts/Authenticate.aspx?Source=' + encodeURIComponent(location.pathname) + location.hash;
+        loginURL = ko.computed (function () {
+            return '../_layouts/Authenticate.aspx?Source=' + encodeURIComponent (location.pathname) + location.hash;
         });
-
 
         // Return public methods
         return {
