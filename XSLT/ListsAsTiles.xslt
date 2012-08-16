@@ -48,6 +48,7 @@
                 <xsl:sort
                         select="translate(substring-before(substring-after(@__spPropertiesXml, 'Modified=&quot;'), '&quot; LastDeleted'), ' :', '')"
                         order="descending" data-type="number"/>
+                <!-- Known issue: Date is in 12 hour format so there's an 12 hour offset if item is changed PM -->
                 <xsl:if test="position() &lt;= $configMapNS/global/maxTiles">
                     <xsl:variable name="coreMetaData">
                         <xsl:call-template name="MetaData">
